@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0e4d66a8b4c7a40ba0aaee102210a0, type: 3}
+  m_Name: GhostEnemy
+  m_EditorClassIdentifier: 
+  m_UnitSprite: {fileID: 1210137198, guid: 0eb2e4592c7b6734a9164413568ae5ff, type: 3}
+  m_UnitSpriteColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+  m_Animations: {fileID: 9100000, guid: 82440fe872831d14e94c47fbc78f868f, type: 2}
+  m_UnitSpriteScale: {x: 1, y: 1}
+  m_UnitSpritePosition: {x: 0, y: 0.177}
+  m_ShadowSpriteScale: {x: 1, y: 1}
+  m_ShadowPosition: {x: -0.035, y: -0.35}
+  m_HPBarSize: {x: 25, y: 33}
+  m_HPBarPosition: {x: 0, y: 25}
+  m_TakeDamageVFXPrefabs: []
+  m_TakeDamageVFXPrefabScale: {x: 1.2, y: 1.2}
+  m_TakeDamageVFXAreaRadius: 0.13
+  m_TakeDamageVFXAreaPosition: {x: 0, y: 0.068}
+  m_DeathSFXPrefabs:
+  - {fileID: 1846393053755643985, guid: 7c1c114aa1e192f4fa0b14b1997be816, type: 3}
+  m_MeleeAttackSFXPrefabs: []
+  m_AttackVoiceSFXPrefabs: []
+  m_ConfirmationVoiceSFXPrefabs: []
+  m_ConfirmationVoiceCooldown: 0
+  m_RespawnVoiceSFXPrefabs: []
+  m_MeleeAttackSFXRate: 1
+  m_AttackVoiceRate: 0.7
+  m_UnitName: Ghost
+  m_MoveType: 1
+  m_MeleeDamage: 50
+  m_AttackAnimationSpeed: 1
+  m_MeleeAttackRangeRadius: 0.4
+  m_SpeedControl: 1
+  m_MoveSpeed: 0.5
+  m_HitPoints: 400
+  m_ColliderRadius: 0.2
+  m_ColliderPosition: {x: 0, y: 0.17}
+  m_RandomSelectMovePointTime: 2
+  m_FindNewTargetTime: 2
+  m_AgressionRadius: 3
+  m_PlayerDamage: 2
+  m_Gold: 30
+  m_DeathScore: 400

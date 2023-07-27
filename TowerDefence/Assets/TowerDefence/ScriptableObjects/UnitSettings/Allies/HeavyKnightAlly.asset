@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0e4d66a8b4c7a40ba0aaee102210a0, type: 3}
+  m_Name: HeavyKnightAlly
+  m_EditorClassIdentifier: 
+  m_UnitSprite: {fileID: 21300000, guid: e757e8d9cc848d54f8ae5e8b4e23b7df, type: 3}
+  m_UnitSpriteColor: {r: 1, g: 0.8392157, b: 0.627451, a: 1}
+  m_Animations: {fileID: 9100000, guid: 260c7386ae4f40b488d4c357ec6435c9, type: 2}
+  m_UnitSpriteScale: {x: 2.5, y: 2.5}
+  m_UnitSpritePosition: {x: 0, y: 0.227}
+  m_ShadowSpriteScale: {x: 1.3, y: 1.3}
+  m_ShadowPosition: {x: 0, y: 0}
+  m_HPBarSize: {x: 22, y: 32}
+  m_HPBarPosition: {x: 0, y: 27}
+  m_TakeDamageVFXPrefabs:
+  - {fileID: 8767459585306373993, guid: d920093e918f4a34fbddabf11319749e, type: 3}
+  - {fileID: 4608052694031768116, guid: 256eef93e981f7c419b5a8286b32abc4, type: 3}
+  - {fileID: 575331700450506942, guid: a81ae2209846690478efe1e860206766, type: 3}
+  - {fileID: 4780215306900155148, guid: 352165a1ced75f94a989e324a9d9fda2, type: 3}
+  m_TakeDamageVFXPrefabScale: {x: 1.4, y: 1.4}
+  m_TakeDamageVFXAreaRadius: 0.15
+  m_TakeDamageVFXAreaPosition: {x: 0, y: 0.128}
+  m_DeathSFXPrefabs:
+  - {fileID: 1846393053755643985, guid: 52b3e050754a2a44686471823da045c2, type: 3}
+  - {fileID: 1846393053755643985, guid: 0b9def930b140044b81633de77d87711, type: 3}
+  - {fileID: 1846393053755643985, guid: 7e5738dc2bc413d49b14d6cdd47c45e2, type: 3}
+  - {fileID: 1846393053755643985, guid: 896df33c3f105bb439bf66c350095e14, type: 3}
+  - {fileID: 1846393053755643985, guid: c185aaf169f20fe4dbf6ed26954c18e2, type: 3}
+  - {fileID: 1846393053755643985, guid: 0eb99d960b28ed945bfd52d0b0931fbb, type: 3}
+  m_MeleeAttackSFXPrefabs:
+  - {fileID: 1846393053755643985, guid: c6c3c24a27988804981bc5be01343ff6, type: 3}
+  - {fileID: 1846393053755643985, guid: 0892360050435d54aacdc4ac89101b7b, type: 3}
+  - {fileID: 1846393053755643985, guid: 4b058a758e0d5f94baa998990e55c74e, type: 3}
+  m_AttackVoiceSFXPrefabs: []
+  m_ConfirmationVoiceSFXPrefabs: []
+  m_ConfirmationVoiceCooldown: 0
+  m_RespawnVoiceSFXPrefabs: []
+  m_MeleeAttackSFXRate: 1
+  m_AttackVoiceRate: 0.7
+  m_UnitName: HeavyKnight
+  m_MoveType: 0
+  m_MeleeDamage: 20
+  m_AttackAnimationSpeed: 0.8
+  m_MeleeAttackRangeRadius: 0.4
+  m_SpeedControl: 1
+  m_MoveSpeed: 1
+  m_HitPoints: 1000
+  m_ColliderRadius: 0.2
+  m_ColliderPosition: {x: 0, y: 0.18}
+  m_RandomSelectMovePointTime: 2
+  m_FindNewTargetTime: 2
+  m_AgressionRadius: 1.5
+  m_PlayerDamage: 2
+  m_Gold: 25
+  m_DeathScore: 250
