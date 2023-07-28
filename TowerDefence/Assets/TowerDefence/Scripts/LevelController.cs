@@ -22,8 +22,8 @@ namespace SpaceShooter
 
     public class LevelController : MonoSingleton<LevelController>
     {
-        // Звезды за прохождение уровня (от 1 до 3)
-        public int LevelStars => 3;
+        private int m_LevelStars = 3;
+        public int LevelStars => m_LevelStars;
 
         [SerializeField] private float m_ReferenceTime;
         public float ReferenceTime => m_ReferenceTime;
@@ -49,7 +49,15 @@ namespace SpaceShooter
 
         private void Start()
         {
-            Player.Instance.EventOnPlayerDeath.AddListener(OnLoseLevel);
+            Player.Instance.EventOnPlayerDeath.AddListener(OnLevelLose);
+
+            Player.Instance.EventOnTakeDamage.AddListener(OnDamageTaken);
+
+            void OnDamageTaken()
+            {
+                m_LevelStars--;
+                Player.Instance.EventOnTakeDamage.RemoveListener(OnDamageTaken);
+            }
         }
 
         private void Update()
@@ -62,10 +70,28 @@ namespace SpaceShooter
             }
         }
 
-        private void OnLoseLevel()
+        private void OnLevelLose()
         {
-            LevelSequenceController.Instance.FinishCurrentLevel(false);
+            OnLevelComplete();
 
+            m_LevelStars = 0;
+
+            LevelSequenceController.Instance.FinishCurrentLevel(false);
+        }
+
+        private void OnLevelVictory()
+        {
+            OnLevelComplete();
+
+            if (m_ReferenceTime <= m_LevelTime)
+                m_LevelStars--;
+
+            LevelSequenceController.Instance.FinishCurrentLevel(true);
+        }
+
+        private void OnLevelComplete()
+        {
+            m_IsLevelCompleted = true;
             StopLevelActivity();
 
             m_EventLevelComplete.Invoke();
@@ -84,23 +110,11 @@ namespace SpaceShooter
                     numCompleted++;
 
                 if (condition.Condition == LevelCondition.Time && condition.IsCompleted == false)
-                {
-                    m_IsLevelCompleted = true;
-
-                    OnLoseLevel();
-                }
+                    OnLevelLose();
             }
 
             if (numCompleted == m_Conditions.Length)
-            {
-                m_IsLevelCompleted = true;
-
-                LevelSequenceController.Instance.FinishCurrentLevel(true);
-
-                StopLevelActivity();
-
-                m_EventLevelComplete.Invoke();
-            }
+                OnLevelVictory();
         }
 
         private void StopLevelActivity()
