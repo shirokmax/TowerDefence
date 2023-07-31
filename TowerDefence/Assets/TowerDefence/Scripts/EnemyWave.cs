@@ -23,8 +23,8 @@ namespace TowerDefence
         [SerializeField] private PathGroup[] m_Groups;
         [SerializeField] private float m_PrepareTime = 10f;
 
-        [Space]
-        [SerializeField] private EnemyWave m_NextWave;
+        [SerializeField] private float m_DelayBetweenSpawn = 1.5f;
+        public float DelayBetweenSpawn => m_DelayBetweenSpawn;
 
         private UnityEvent m_EventOnWaveReady = new UnityEvent();
 

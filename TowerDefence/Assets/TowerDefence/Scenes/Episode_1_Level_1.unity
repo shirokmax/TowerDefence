@@ -2230,7 +2230,7 @@ MonoBehaviour:
     - settings: {fileID: 11400000, guid: bf5bb6e0668cac242a2db1444d91d837, type: 2}
       count: 1
   m_PrepareTime: 10
-  m_NextWave: {fileID: 623159060}
+  m_DelayBetweenSpawn: 1.5
 --- !u!1001 &401194633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4627,7 +4627,7 @@ MonoBehaviour:
     - settings: {fileID: 11400000, guid: f0b024b919b3d6340aac3240e011f345, type: 2}
       count: 2
   m_PrepareTime: 10
-  m_NextWave: {fileID: 0}
+  m_DelayBetweenSpawn: 1.5
 --- !u!1 &626054372
 GameObject:
   m_ObjectHideFlags: 0
@@ -5818,7 +5818,7 @@ MonoBehaviour:
     - settings: {fileID: 11400000, guid: f2b9f82868111794a8899b8815383fe7, type: 2}
       count: 5
   m_PrepareTime: 10
-  m_NextWave: {fileID: 1124758289}
+  m_DelayBetweenSpawn: 1.5
 --- !u!1 &751476929
 GameObject:
   m_ObjectHideFlags: 0
@@ -9247,7 +9247,7 @@ MonoBehaviour:
     - settings: {fileID: 11400000, guid: f529576e49e775b43b6f18a4f8162880, type: 2}
       count: 1
   m_PrepareTime: 10
-  m_NextWave: {fileID: 400322479}
+  m_DelayBetweenSpawn: 1.5
 --- !u!1001 &1136569827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9466,7 +9466,7 @@ MonoBehaviour:
     - settings: {fileID: 11400000, guid: 05f2e9ab686c4e64e86057648c156dcd, type: 2}
       count: 1
   m_PrepareTime: 8
-  m_NextWave: {fileID: 743449038}
+  m_DelayBetweenSpawn: 1.5
 --- !u!1 &1156318332
 GameObject:
   m_ObjectHideFlags: 0
@@ -12510,7 +12510,7 @@ MonoBehaviour:
     - settings: {fileID: 11400000, guid: f2b9f82868111794a8899b8815383fe7, type: 2}
       count: 3
   m_PrepareTime: 8
-  m_NextWave: {fileID: 1144369890}
+  m_DelayBetweenSpawn: 1.5
 --- !u!1 &1551683316
 GameObject:
   m_ObjectHideFlags: 0
@@ -15282,6 +15282,7 @@ MonoBehaviour:
   m_Paths:
   - {fileID: 1624985627}
   - {fileID: 1755845006}
+  m_WaveStartSFXPrefab: {fileID: 1846393053755643985, guid: f13c124fb21985d4fbd69521975a7341, type: 3}
 --- !u!1 &1833543526
 GameObject:
   m_ObjectHideFlags: 0

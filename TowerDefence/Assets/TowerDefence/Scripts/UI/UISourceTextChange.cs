@@ -7,7 +7,8 @@ namespace TowerDefence
     public enum SourceType
     {
         Gold,
-        Lives
+        Lives,
+        Waves
     }
 
     [RequireComponent(typeof(Text))]
@@ -41,6 +42,10 @@ namespace TowerDefence
                     }
                     break;
 
+                case SourceType.Waves:
+                    EnemyWavesManager.Instance.WaveNumChangeSubscribe(OnWaveChange);
+                    break;
+
                 default:
                     break;
             }
@@ -59,6 +64,11 @@ namespace TowerDefence
         private void OnDamagePlayer()
         {
             m_Animator.Play("TakeDamage@LivesText");
+        }
+
+        private void OnWaveChange(int num, int allCount)
+        {
+            m_Text.text = $"Wave {num}/{allCount}";
         }
     }
 }
