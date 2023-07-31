@@ -5,6 +5,9 @@ namespace TowerDefence
 {
     public class UnitPath : MonoBehaviour
     {
+        [SerializeField] CircleArea m_StartArea;
+        public CircleArea StartArea => m_StartArea;
+
         [SerializeField] CircleArea[] m_Points;
         public int Length => m_Points.Length;
         public CircleArea this[int i] => m_Points[i];

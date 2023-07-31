@@ -649,7 +649,6 @@ MonoBehaviour:
   m_RandomSelectMovePointTime: 2
   m_FindNewTargetTime: 2
   m_AgressionRadius: 3
-  m_StopMoveToEnemyRadius: 0.35
   m_EventOnPathEnd:
     m_PersistentCalls:
       m_Calls:
