@@ -26,10 +26,17 @@ namespace TowerDefence
         [SerializeField] private float m_DelayBetweenSpawn = 1.5f;
         public float DelayBetweenSpawn => m_DelayBetweenSpawn;
 
+        public float PrepareRemainingTime => m_PrepareTime - Time.time;
+
         private UnityEvent m_EventOnWaveReady = new UnityEvent();
+
+        private static UnityEvent<float> m_EventOnWavePrepare;
+        public static UnityEvent<float> EventOnWavePrepare => m_EventOnWavePrepare;
 
         private void Awake()
         {
+            m_EventOnWavePrepare ??= new UnityEvent<float>();
+
             enabled = false;
         }
 
@@ -45,8 +52,15 @@ namespace TowerDefence
         public void Prepare(UnityAction spawnEnemies)
         {
             enabled = true;
+            EventOnWavePrepare?.Invoke(m_PrepareTime);
             m_PrepareTime += Time.time;
             m_EventOnWaveReady.AddListener(spawnEnemies);
+        }
+
+        public void CancelPrepare()
+        {
+            enabled = false;
+            m_EventOnWaveReady.RemoveAllListeners();
         }
 
         public IEnumerable<(UnitSettings settings, int count, int pathIndex)> EnumerateSquads()

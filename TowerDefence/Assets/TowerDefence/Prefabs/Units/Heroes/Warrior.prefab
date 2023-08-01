@@ -862,7 +862,7 @@ MonoBehaviour:
   m_AnimationEvents: {fileID: 2811886278753018383}
   m_MoveType: 0
   m_MoveSpeed: 1.5
-  m_MeleeDamage: 30
+  m_MeleeDamage: 20
   m_AttackAnimationSpeed: 1
   m_MeleeAttackRangeRadius: 0.6
   isInvincibleWasOn: 0
