@@ -16913,7 +16913,7 @@ GameObject:
   - component: {fileID: 1993847489}
   - component: {fileID: 1993847490}
   m_Layer: 0
-  m_Name: LevelConditionSurviveTime
+  m_Name: LevelConditionWaves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16943,10 +16943,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1993847488}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db35b23c58067e240b3f92e089b0c728, type: 3}
+  m_Script: {fileID: 11500000, guid: bfa9448df31f2ce44af88ea968e061f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TimeInSeconds: 200
 --- !u!1 &1997637994
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,6 +21,8 @@ namespace TowerDefence
         private EnemyWave[] m_Waves;
         private int m_WaveIndex;
 
+        private int m_ActiveEnemyUnitsCount;
+
         private UnityEvent<int, int> m_EventOnWaveNumChange = new UnityEvent<int, int>();
 
         private UnityEvent m_EventOnStartSpawnEnemies = new UnityEvent();
@@ -28,6 +30,9 @@ namespace TowerDefence
 
         private UnityEvent m_EventOnEndSpawnEnemies = new UnityEvent();
         public UnityEvent EventOnEndSpawnEnemies => m_EventOnEndSpawnEnemies;
+
+        private UnityEvent m_EventOnAllWavesDead = new UnityEvent();
+        public UnityEvent EventOnAllWavesDead => m_EventOnAllWavesDead;
 
         public void WaveNumChangeSubscribe(UnityAction<int, int> action)
         {
@@ -64,6 +69,14 @@ namespace TowerDefence
             StartCoroutine(SpawnEnemiesCoroutine());
         }
 
+        private void OnEnemyUnitDeath()
+        {
+            m_ActiveEnemyUnitsCount--;
+
+            if (m_WaveIndex == m_Waves.Length && m_ActiveEnemyUnitsCount == 0)
+                m_EventOnAllWavesDead?.Invoke();
+        }
+
         private IEnumerator SpawnEnemiesCoroutine()
         {
             //Выключение кнопки форсирования след. волны
@@ -83,6 +96,9 @@ namespace TowerDefence
                         Enemy enemy = Instantiate(m_EnemyPrefab, m_Paths[pathIndex].StartArea.GetRandomInsideZone(), Quaternion.identity);
                         enemy.ApplySettings(settings);
                         enemy.GetComponent<AIController>().SetPathBehaviour(m_Paths[pathIndex], AIBehaviour.PathMove);
+
+                        m_ActiveEnemyUnitsCount++;
+                        enemy.EventOnDestroy.AddListener(OnEnemyUnitDeath);
 
                         yield return new WaitForSeconds(m_Waves[m_WaveIndex].DelayBetweenSpawn);
                     }

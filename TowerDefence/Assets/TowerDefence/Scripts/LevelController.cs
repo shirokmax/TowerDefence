@@ -10,6 +10,7 @@ namespace SpaceShooter
         Kills,
         Time,
         SurviveTime,
+        Waves,
         CutScene
     }
 
