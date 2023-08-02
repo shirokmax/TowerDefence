@@ -20,6 +20,8 @@ namespace TowerDefence
 
         private void Start()
         {
+            enabled = false;
+
             EnemyWavesManager.Instance.EventOnStartSpawnEnemies.AddListener(OnSkipDisable);
             EnemyWavesManager.Instance.EventOnEndSpawnEnemies.AddListener(OnSkipEnable);
 
@@ -28,6 +30,9 @@ namespace TowerDefence
                 m_TimeToNextWave = time;
                 m_NextWaveTimer = time;
             });
+
+            WaveSkipProgressBarPanel.gameObject.SetActive(false);
+            WaveSkipBonusGoldText.text = " START WAVE";
         }
 
         private void Update()
@@ -45,6 +50,7 @@ namespace TowerDefence
 
         public void OnCallWaveButtonClick()
         {
+            enabled = true;
             EnemyWavesManager.Instance?.ForceWave();
         }
 

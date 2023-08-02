@@ -23,20 +23,20 @@ namespace SpaceShooter
 
     public class LevelController : MonoSingleton<LevelController>
     {
+        [SerializeField] private float m_AdditionalReferenceTime;
+
         private int m_LevelStars = 3;
         public int LevelStars => m_LevelStars;
 
-        [SerializeField] private float m_ReferenceTime;
-        public float ReferenceTime => m_ReferenceTime;
-
         private ILevelCondition[] m_Conditions;
-        public ILevelCondition[] Conditions => m_Conditions;
 
         private bool m_IsLevelCompleted;
         public bool IsLevelCompleted => m_IsLevelCompleted;
 
         private UnityEvent m_EventLevelComplete = new UnityEvent();
         public UnityEvent EventLevelComplete => m_EventLevelComplete;
+
+        private float m_ReferenceTime;
 
         private float m_LevelTime;
         public float LevelTime => m_LevelTime;
@@ -46,6 +46,8 @@ namespace SpaceShooter
             base.Awake();
 
             m_Conditions = GetComponentsInChildren<ILevelCondition>();
+
+            m_ReferenceTime += m_AdditionalReferenceTime;
         }
 
         private void Start()
@@ -116,6 +118,13 @@ namespace SpaceShooter
 
             if (numCompleted == m_Conditions.Length)
                 OnLevelVictory();
+        }
+
+        public void SetReferenceTime(float time)
+        {
+            if (time < 0) return;
+
+            m_ReferenceTime = time;
         }
 
         private void StopLevelActivity()

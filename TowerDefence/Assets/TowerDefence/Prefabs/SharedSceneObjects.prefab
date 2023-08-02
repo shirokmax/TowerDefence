@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 4377426271126516755}
   - component: {fileID: 2650975163182961041}
   - component: {fileID: 5506127267171336673}
+  - component: {fileID: 2676242497406318275}
   m_Layer: 5
   m_Name: SkipWaveButton
   m_TagString: Untagged
@@ -290,6 +291,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!95 &2676242497406318275
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401920896709493631}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 49dd920f5fcdb5d4c88e8a98ac9d746e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &500990397151787495
 GameObject:
   m_ObjectHideFlags: 0
@@ -6080,7 +6102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f0fa57e7751d2d458448cf53e01dc11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BonusGoldPerSecond: 5
   m_SkipWaveButton: {fileID: 5506127267171336673}
   WaveSkipBonusPanel: {fileID: 3740747230593274899}
   WaveSkipProgressBarPanel: {fileID: 1443488296632341651}
@@ -6429,7 +6450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.8258381, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.9111887, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

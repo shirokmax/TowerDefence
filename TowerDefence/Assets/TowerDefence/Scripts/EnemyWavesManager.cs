@@ -50,8 +50,17 @@ namespace TowerDefence
 
         private void Start()
         {
-            if (m_Waves.Length > 0)
-                m_Waves[m_WaveIndex].Prepare(StartSpawnEnemies);
+            LevelController.Instance.SetReferenceTime(CalculateLevelReferenceTime());
+        }
+
+        private float CalculateLevelReferenceTime()
+        {
+            float time = 0;
+
+            foreach (var wave in m_Waves)
+                time += wave.GetWaveTime();
+
+            return time;
         }
 
         private void StartSpawnEnemies()
@@ -63,9 +72,12 @@ namespace TowerDefence
         {
             if (m_WaveIndex >= m_Waves.Length) return;
 
-            Player.Instance.AddGold((int)m_Waves[m_WaveIndex].PrepareRemainingTime * m_SkipWaveBonusGoldPerSecond);
+            if (m_WaveIndex != 0)
+            {
+                Player.Instance.AddGold((int)m_Waves[m_WaveIndex].PrepareRemainingTime * m_SkipWaveBonusGoldPerSecond);
+                m_Waves[m_WaveIndex].CancelPrepare();
+            }
 
-            m_Waves[m_WaveIndex].CancelPrepare();
             StartCoroutine(SpawnEnemiesCoroutine());
         }
 

@@ -74,5 +74,18 @@ namespace TowerDefence
                 }
             }
         }
+
+        public float GetWaveTime()
+        {
+            int unitsCount = 0;
+
+            foreach(var group in m_Groups)
+            {
+                foreach (var squad in group.squads)
+                    unitsCount += squad.count;
+            }
+
+            return m_PrepareTime + unitsCount * m_DelayBetweenSpawn;
+        }
     }
 }
