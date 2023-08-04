@@ -6,6 +6,7 @@ namespace TowerDefence
 {
     public class UnitVisualModel : MonoBehaviour
     {
+        #region Properties
         [SerializeField] private Unit m_Unit;
 
         [Space]
@@ -59,6 +60,8 @@ namespace TowerDefence
         private Vector3 m_ShadowSpriteLocalPos;
 
         private const float FLIP_DIR_THRESHOLD = 0.05f;
+
+        #endregion
 
         private void Awake()
         {

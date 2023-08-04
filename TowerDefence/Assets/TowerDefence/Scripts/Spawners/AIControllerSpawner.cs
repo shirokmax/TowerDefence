@@ -112,6 +112,7 @@ namespace SpaceShooter
                 }
             }
         }
+
         #region Set Parameters
         public void SetUnitSettings(UnitSettings[] settings)
         {

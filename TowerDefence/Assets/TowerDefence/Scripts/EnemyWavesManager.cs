@@ -12,7 +12,7 @@ namespace TowerDefence
         [SerializeField] private UnitPath[] m_Paths;
 
         [Space]
-        [SerializeField] private int m_SkipWaveBonusGoldPerSecond = 5;
+        [Min(0)][SerializeField] private int m_SkipWaveBonusGoldPerSecond = 5;
         public int SkipWaveBonusGoldPerSecond => m_SkipWaveBonusGoldPerSecond;
 
         [Space]
@@ -120,6 +120,8 @@ namespace TowerDefence
                     Debug.LogWarning($"Invalid pathIndex in {name}");
                 }
             }
+
+            yield return new WaitForSeconds(m_Waves[m_WaveIndex].DelayAfterWaveSpawned);
 
             m_WaveIndex++;
 

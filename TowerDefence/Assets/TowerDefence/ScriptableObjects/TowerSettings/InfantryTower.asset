@@ -28,7 +28,7 @@ MonoBehaviour:
   m_UnitSpawnerRadius: 0.13
   m_UnitSettings: {fileID: 11400000, guid: af58903c5e5d0554dab312fe9cd8d663, type: 2}
   m_UnitsSpawnCount: 3
-  m_UnitsRespawnTime: 10
+  m_UnitsRespawnTime: 20
   m_UnitSpawnSFXPrefabs:
   - {fileID: 1846393053755643985, guid: 6f8352342d14ef940a1763f076bb2590, type: 3}
   - {fileID: 1846393053755643985, guid: f1f10b229cdb94840b2c8a41d49282f5, type: 3}

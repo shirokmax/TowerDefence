@@ -6,7 +6,7 @@ namespace TowerDefence
 {
     public class MapLevel : MonoBehaviour
     {
-        private Episode m_Epidode;
+        [SerializeField] private Episode m_Epidode;
         public Episode Episode => m_Epidode;
 
         [Space]
@@ -23,6 +23,8 @@ namespace TowerDefence
         [SerializeField] private Image[] m_Stars;
         [SerializeField] private Color m_DeactivatedStarColor = new Color(0, 0, 0, 0.82f);
 
+        public bool IsComplete => gameObject.activeSelf && m_Stars[0].color == Color.white;
+
         private bool m_LevelSelected;
 
         private void Awake()
@@ -38,15 +40,17 @@ namespace TowerDefence
             ClickSpot.EventOnSpotClick.AddListener(OnLevelClicked);
         }
 
-        public void SetLevelData(Episode episode, int stars)
+        public int Initialize()
         {
-            m_Epidode = episode;
+            int stars = MapCompletion.Instance.GetEpisodeStars(m_Epidode);
 
             if (stars <= m_Stars.Length)
             {
                 for (int i = 0; i < stars; i++)
                     m_Stars[i].color = Color.white;
             }
+
+            return stars;
         }
 
         private void OnLevelClicked(Transform mapLevel)

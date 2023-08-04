@@ -12,7 +12,7 @@ namespace TowerDefence
         public static bool TryLoad(string filename, ref T data)
         {
             string path = FileHandler.Path(filename);
-
+            
             if (File.Exists(path))
             {
                 var dataString = File.ReadAllText(path);

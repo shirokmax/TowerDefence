@@ -7,7 +7,7 @@ namespace TowerDefence
     public class MapCompletion : MonoSingleton<MapCompletion>
     {
         [Serializable]
-        private class EpisodeScore
+        private class EpisodeStars
         {
             public Episode episode;
             public int stars;
@@ -15,29 +15,27 @@ namespace TowerDefence
 
         public const string FILENAME = "Completion.dat";
 
-        [SerializeField] private EpisodeScore[] m_CompletionData;
+        [SerializeField] private EpisodeStars[] m_CompletionData;
+
+        private int m_TotalStars;
+        public int TotalStars => m_TotalStars;
 
         protected override void Awake()
         {
             base.Awake();
 
-            DataSaver<EpisodeScore[]>.TryLoad(FILENAME, ref m_CompletionData);
+            DataSaver<EpisodeStars[]>.TryLoad(FILENAME, ref m_CompletionData);
+            m_TotalStars = CalculateTotalStars();
         }
 
-        public bool TryCompletionDataIndex(int index, out Episode episode, out int stars)
+        private int CalculateTotalStars()
         {
-            if (index >= 0 && index < m_CompletionData.Length)
-            {
-                episode = m_CompletionData[index].episode;
-                stars = m_CompletionData[index].stars;
+            int total = 0;
 
-                return true;
-            }
+            foreach (var episodeStars in m_CompletionData)
+                total += episodeStars.stars;
 
-            episode = null;
-            stars = 0;
-
-            return false;
+            return total;
         }
 
         public void SaveResult(Episode currentEpisode, int stars)
@@ -50,16 +48,31 @@ namespace TowerDefence
                     {
                         item.stars = stars;
 
-                        DataSaver<EpisodeScore[]>.Save(FILENAME, m_CompletionData);
+                        DataSaver<EpisodeStars[]>.Save(FILENAME, m_CompletionData);
                     }
                 }
             }
+
+            m_TotalStars = CalculateTotalStars();
+        }
+
+        public int GetEpisodeStars(Episode ep)
+        {
+            foreach (var data in m_CompletionData)
+            {
+                if (data.episode == ep)
+                    return data.stars;
+            }
+
+            return 0;
         }
 
         public void ResetProgress()
         {
             foreach (var item in m_CompletionData)
                 item.stars = 0;
+
+            m_TotalStars = 0;
         }
     }
 }

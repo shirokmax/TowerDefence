@@ -139,7 +139,9 @@ namespace SpaceShooter
             UIHeroPanel.Instance.enabled = false;
 
             foreach (var visualModel in FindObjectsOfType<UnitVisualModel>())
+            {
                 visualModel.UnitAnimator.SetBool("Attack", false);
+            }
         }
 
         private static void DisableAll<T>() where T : MonoBehaviour

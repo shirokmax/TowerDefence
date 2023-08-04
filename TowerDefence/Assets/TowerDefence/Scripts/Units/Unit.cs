@@ -220,6 +220,11 @@ namespace TowerDefence
             return;
         }
 
+        private void OnDisable()
+        {
+            SpeedControl = 0;
+        }
+
         protected override void OnEnable()
         {
             base.OnEnable();

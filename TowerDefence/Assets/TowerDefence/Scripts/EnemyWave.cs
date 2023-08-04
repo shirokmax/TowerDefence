@@ -21,10 +21,13 @@ namespace TowerDefence
         }
 
         [SerializeField] private PathGroup[] m_Groups;
-        [SerializeField] private float m_PrepareTime = 10f;
+        [Min(0f)] [SerializeField] private float m_PrepareTime = 10f;
 
-        [SerializeField] private float m_DelayBetweenSpawn = 1.5f;
+        [Min(0f)] [SerializeField] private float m_DelayBetweenSpawn = 1.5f;
         public float DelayBetweenSpawn => m_DelayBetweenSpawn;
+
+        [Min(0f)] [SerializeField] private float m_DelayAfterWaveSpawned = 5f;
+        public float DelayAfterWaveSpawned => m_DelayAfterWaveSpawned;
 
         public float PrepareRemainingTime => m_PrepareTime - Time.time;
 
@@ -85,7 +88,7 @@ namespace TowerDefence
                     unitsCount += squad.count;
             }
 
-            return m_PrepareTime + unitsCount * m_DelayBetweenSpawn;
+            return m_PrepareTime + unitsCount * m_DelayBetweenSpawn + m_DelayAfterWaveSpawned;
         }
     }
 }
