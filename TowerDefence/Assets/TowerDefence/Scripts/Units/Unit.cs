@@ -37,6 +37,9 @@ namespace TowerDefence
         [SerializeField] private float m_MoveSpeed;
         public float MoveSpeed => m_MoveSpeed;
 
+        [SerializeField] private int m_Armor;
+        public int Armor => m_Armor;
+
         [SerializeField] private int m_MeleeDamage;
         public int MeleeDamage => m_MeleeDamage;
 
@@ -101,6 +104,7 @@ namespace TowerDefence
             m_MoveType = settings.MoveType;
 
             m_MaxHitPoints = settings.HitPoints;
+            m_Armor = settings.Armor;
             m_MoveSpeed = settings.MoveSpeed;
             m_MeleeDamage = settings.MeleeDamage;
             m_AttackAnimationSpeed = settings.AttackAnimationSpeed;
@@ -148,7 +152,7 @@ namespace TowerDefence
         public void SetMeleeDamage(int damage)
         {
             if (damage < 0) return;
-
+            
             m_MeleeDamage = damage;
         }
 

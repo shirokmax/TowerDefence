@@ -103,6 +103,9 @@ namespace TowerDefence
         [SerializeField] private int m_HitPoints = 10;
         public int HitPoints => m_HitPoints;
 
+        [SerializeField] private int m_Armor = 0;
+        public int Armor => m_Armor;
+
         [Space]
         [SerializeField] private float m_ColliderRadius = 0.19f;
         public float ColliderRadius => m_ColliderRadius;

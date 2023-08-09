@@ -76,5 +76,13 @@ namespace TowerDefence
 
             return result;
         }
+
+        public static void Reset()
+        {
+            FileHandler.Reset(FILENAME);
+
+            foreach(var save in Instance.m_Saves)
+                save.level = 0;
+        }
     }
 }

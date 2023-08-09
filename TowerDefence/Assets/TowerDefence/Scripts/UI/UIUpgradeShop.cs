@@ -184,5 +184,16 @@ namespace TowerDefence
             m_SelectedSlotInfoIndex++;
             SelectUpgradeSlot(m_SelectedUpgrade);
         }
+
+        public void ResetUpgrades()
+        {
+            Upgrades.Reset();
+
+            UpdateStars();
+            foreach (var slot in m_UpgradeSlots)
+                slot.UpdateSlot();
+
+            SelectUpgradeSlot(m_SelectedUpgrade);
+        }
     }
 }

@@ -38,9 +38,9 @@ namespace TowerDefence
         public void OnStartNewGameButtonClick()
         {
             FileHandler.Reset(MapCompletion.FILENAME);
+            FileHandler.Reset(Upgrades.FILENAME);
 
-            if (MapCompletion.Instance != null)
-                MapCompletion.Instance.ResetProgress();
+            MapCompletion.Instance.ResetProgress();
 
             SceneManager.LoadScene(1);
         }
