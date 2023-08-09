@@ -22,7 +22,27 @@ namespace TowerDefence
         [SerializeField] private AIControllerSpawner m_UnitSpawner;
         public AIControllerSpawner UnitSpawner => m_UnitSpawner;
 
+        [Space]
+        [SerializeField] private UpgradeAsset m_AttackRangeUpgrade;
+        [SerializeField] private UpgradeAsset m_DamageUpgrade;
+        [SerializeField] private UpgradeAsset m_AttackSpeedUpgrade;
+
+        [Space]
+        [SerializeField] private UpgradeAsset m_UnitsHitPointsUpgrade;
+        [SerializeField] private UpgradeAsset m_UnitsDamageUpgrade;
+        [SerializeField] private UpgradeAsset m_UnitsRespawnTimeUpgrade;
+
         private Enemy m_Target;
+
+        protected override void Start()
+        {
+            base.Start();
+
+            m_Radius += Upgrades.GetUpgradeValueByLevel(m_AttackRangeUpgrade, Upgrades.GetUpgradeLevel(m_AttackRangeUpgrade));
+
+            float fireRate = Upgrades.GetUpgradeValueByLevel(m_AttackSpeedUpgrade, Upgrades.GetUpgradeLevel(m_AttackSpeedUpgrade));
+            m_MainTurret.SetAdditionalFireRate(-fireRate);
+        }
 
         private void Update()
         {
@@ -39,7 +59,13 @@ namespace TowerDefence
                 else
                 {
                     m_MainTurret.transform.up = m_Target.transform.position - m_MainTurret.transform.position;
-                    m_MainTurret.Fire(m_Target);
+                    Projectile projectile = m_MainTurret.Fire(m_Target);
+
+                    if (m_DamageUpgrade != null && projectile != null)
+                    {
+                        int damage = (int)Upgrades.GetUpgradeValueByLevel(m_DamageUpgrade, Upgrades.GetUpgradeLevel(m_DamageUpgrade));
+                        projectile.AddDamage(damage);
+                    }
                 }
             }
         }
@@ -83,6 +109,13 @@ namespace TowerDefence
 
             m_UnitSpawner.enabled = settings.SpawnUnits;
 
+            m_AttackRangeUpgrade = settings.AttackRangeUpgrade;
+            m_DamageUpgrade = settings.DamageUpgrade;
+            m_AttackSpeedUpgrade = settings.AttackSpeedUpgrade;
+            m_UnitsHitPointsUpgrade = settings.UnitsHitPointsUpgrade;
+            m_UnitsDamageUpgrade = settings.UnitsDamageUpgrade;
+            m_UnitsRespawnTimeUpgrade = settings.UnitsRespawnTimeUpgrade;
+
             if (settings.SpawnUnits == true)
             {
                 m_UnitSpawner.transform.localPosition = new Vector3(settings.UnitSpawnerPosition.x, settings.UnitSpawnerPosition.y, 0);
@@ -91,8 +124,11 @@ namespace TowerDefence
                 m_UnitSpawner.SetUnitSettings(settings.UnitSettings);
                 m_UnitSpawner.SetSpawnCount(settings.UnitsSpawnCount);
                 m_UnitSpawner.SetSpawnCountLimit(settings.UnitsSpawnCount);
-                m_UnitSpawner.SetRespawnTime(settings.UnitsRespawnTime);
                 m_UnitSpawner.SetUnitsSpawnSFXPrefabs(settings.UnitSpawnSFXPrefabs);
+                m_UnitSpawner.SetAdditionalUnitsHitPoints((int)Upgrades.GetUpgradeValueByLevel(m_UnitsHitPointsUpgrade, Upgrades.GetUpgradeLevel(m_UnitsHitPointsUpgrade)));
+                m_UnitSpawner.SetAdditionalUnitsDamage((int)Upgrades.GetUpgradeValueByLevel(m_UnitsDamageUpgrade, Upgrades.GetUpgradeLevel(m_UnitsDamageUpgrade)));
+                m_UnitSpawner.SetRespawnTime(settings.UnitsRespawnTime -
+                             Upgrades.GetUpgradeValueByLevel(m_UnitsRespawnTimeUpgrade, Upgrades.GetUpgradeLevel(m_UnitsRespawnTimeUpgrade)));
             }
 
             m_VisualModel.ApplySettings(settings);

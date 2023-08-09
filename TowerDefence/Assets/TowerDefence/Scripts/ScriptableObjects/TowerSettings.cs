@@ -65,5 +65,25 @@ namespace TowerDefence
 
         [SerializeField] private ImpactEffect[] m_UnitSpawnSFXPrefabs;
         public ImpactEffect[] UnitSpawnSFXPrefabs => m_UnitSpawnSFXPrefabs;
+
+        [Space]
+        [SerializeField] private UpgradeAsset m_AttackRangeUpgrade;
+        public UpgradeAsset AttackRangeUpgrade => m_AttackRangeUpgrade;
+
+        [SerializeField] private UpgradeAsset m_DamageUpgrade;
+        public UpgradeAsset DamageUpgrade => m_DamageUpgrade;
+
+        [SerializeField] private UpgradeAsset m_AttackSpeedUpgrade;
+        public UpgradeAsset AttackSpeedUpgrade => m_AttackSpeedUpgrade;
+
+        [Space]
+        [SerializeField] private UpgradeAsset m_UnitsHitPointsUpgrade;
+        public UpgradeAsset UnitsHitPointsUpgrade => m_UnitsHitPointsUpgrade;
+
+        [SerializeField] private UpgradeAsset m_UnitsDamageUpgrade;
+        public UpgradeAsset UnitsDamageUpgrade => m_UnitsDamageUpgrade;
+
+        [SerializeField] private UpgradeAsset m_UnitsRespawnTimeUpgrade;
+        public UpgradeAsset UnitsRespawnTimeUpgrade => m_UnitsRespawnTimeUpgrade;
     }
 }

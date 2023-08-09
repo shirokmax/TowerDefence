@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Type: 2
   m_Speed: 4
   m_Lifetime: 2
-  m_Damage: 110
+  m_Damage: 100
   m_LaunchSFXPrefab: {fileID: 3735660353202367765, guid: 80271c85fc3e1714899d3e8c933e0fa5, type: 3}
   m_HitEffectPrefab: {fileID: 0}
   m_HitSFXPrefab: {fileID: 0}
@@ -132,7 +132,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1983611071
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 872093350, guid: 431de7c8738a2fa4193ae286b3e4d7fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -9,6 +9,7 @@ namespace SpaceShooter
 
         [SerializeField] protected float m_Lifetime;
         [SerializeField] protected int m_Damage;
+        public int Damage => m_Damage;
         [SerializeField] protected ImpactEffect m_LaunchSFXPrefab;
         [SerializeField] protected ImpactEffect m_HitEffectPrefab;
         [SerializeField] protected ImpactEffect m_HitSFXPrefab;
@@ -74,6 +75,11 @@ namespace SpaceShooter
         public void SetTarget(Destructible target)
         {
             m_TargetDest = target;
+        }
+
+        public void AddDamage(int damage)
+        {
+            m_Damage += damage;
         }
     }
 }

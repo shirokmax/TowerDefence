@@ -23,6 +23,8 @@ namespace SpaceShooter
 
         private Destructible m_ParentDest;
 
+        private float m_AdditionalFireRate;
+
         #endregion
 
         #region UnityEvents
@@ -47,11 +49,11 @@ namespace SpaceShooter
         #endregion
 
         #region Public API
-        public void Fire(Destructible target)
+        public Projectile Fire(Destructible target)
         {
-            if (m_TurretProperties == null) return;
-            if (target == null) return;
-            if (CanFire == false) return;
+            if (m_TurretProperties == null) return null;
+            if (target == null) return null;
+            if (CanFire == false) return null;
 
             Projectile projectile = Instantiate(m_TurretProperties.ProjectilePrefab);
             projectile.transform.position = transform.position;
@@ -60,7 +62,14 @@ namespace SpaceShooter
             projectile.SetParentShooter(m_ParentDest);
             projectile.SetTarget(target);
 
-            m_RefireTimer = m_TurretProperties.FireRate;
+            m_RefireTimer = m_TurretProperties.FireRate + m_AdditionalFireRate;
+
+            return projectile;
+        }
+
+        public void SetAdditionalFireRate(float rate)
+        {
+            m_AdditionalFireRate += rate;
         }
 
         public void AssignLoadout(TurretProperties props, float assignTime)

@@ -138,6 +138,13 @@ namespace TowerDefence
             }
         }
 
+        public void SetMaxHitPoints(int hp)
+        {
+            if (hp <= 0) return;
+
+            m_MaxHitPoints = hp;
+        }
+
         public void SetMeleeDamage(int damage)
         {
             if (damage < 0) return;

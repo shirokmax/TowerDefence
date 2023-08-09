@@ -21,6 +21,10 @@ namespace SpaceShooter
         [SerializeField] private Transform m_UnitsHoldPoint;
 
         [Space]
+        [SerializeField] private int m_AdditionalUnitsHitPoints;
+        [SerializeField] private int m_AdditionalUnitsDamage;
+
+        [Space]
         [SerializeField] private ImpactEffect[] m_UnitSpawnSFXPrefabs;
 
         private Transform[] m_HoldPoints;
@@ -61,6 +65,9 @@ namespace SpaceShooter
 
                     int settingsIndex = Random.Range(0, m_UnitSettings.Length);
                     unit.ApplySettings(m_UnitSettings[settingsIndex]);
+
+                    unit.SetMaxHitPoints(unit.MaxHitPoints + m_AdditionalUnitsHitPoints);
+                    unit.SetMeleeDamage(unit.MeleeDamage + m_AdditionalUnitsDamage);
 
                     var dest = unit.GetComponent<Destructible>();
 
@@ -137,14 +144,16 @@ namespace SpaceShooter
 
         public void SetRespawnTime(float time)
         {
-            if (time < 0) return;
+            if (time < 0)
+                m_RespawnTime = 0;
 
             m_RespawnTime = time;
         }
 
         public void SetSpawnCountLimit(int limit)
         {
-            if (limit < 0) return;
+            if (limit < 0)
+                m_SpawnCountLimit = 0;
 
             m_SpawnCountLimit = limit;
         }
@@ -161,6 +170,16 @@ namespace SpaceShooter
             if (effect == null || effect.Length <= 0) return;
 
             m_UnitSpawnSFXPrefabs = effect;
+        }
+
+        public void SetAdditionalUnitsHitPoints(int hp)
+        {
+            m_AdditionalUnitsHitPoints += hp;
+        }
+
+        public void SetAdditionalUnitsDamage(int damage)
+        {
+            m_AdditionalUnitsDamage += damage;
         }
 
         #endregion

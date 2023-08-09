@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2f504daa5fe79f45bbafeda4e6a9066, type: 3}
   m_Name: ArcherTower
   m_EditorClassIdentifier: 
-  m_Nickname: ArcherTower
-  m_TowerGUISprite: {fileID: 21300000, guid: ef25b92a8e4b2644b8420de820e6c11f, type: 3}
+  m_Nickname: Archer Tower
+  m_TowerGUISprite: {fileID: 21300000, guid: 2c77fc082a7249847abc513118f2bd4e, type: 3}
   m_TowerSprite: {fileID: 21300000, guid: 0d1dc428e29b59d4da665429794be749, type: 3}
   m_TowerSpriteScale: {x: 1.2, y: 1.2}
   m_ShadowSpriteScale: {x: 2.5, y: 2.5}
@@ -23,3 +23,16 @@ MonoBehaviour:
   m_TurretPosition: {x: 0, y: 0.28}
   m_Radius: 2.5
   m_GoldCost: 100
+  m_SpawnUnits: 0
+  m_UnitSpawnerPosition: {x: 0, y: 0}
+  m_UnitSpawnerRadius: 0.13
+  m_UnitSettings: {fileID: 0}
+  m_UnitsSpawnCount: 0
+  m_UnitsRespawnTime: 0
+  m_UnitSpawnSFXPrefabs: []
+  m_AttackRangeUpgrade: {fileID: 11400000, guid: 589b09113361ba745a0afcd3012c2113, type: 2}
+  m_DamageUpgrade: {fileID: 11400000, guid: 5ed001aadb9548843893f317319bd01a, type: 2}
+  m_AttackSpeedUpgrade: {fileID: 11400000, guid: 917cd3c2856a8e44e969a5b5a7d27d81, type: 2}
+  m_UnitsHitPointsUpgrade: {fileID: 0}
+  m_UnitsDamageUpgrade: {fileID: 0}
+  m_UnitsRespawnTimeUpgrade: {fileID: 0}
