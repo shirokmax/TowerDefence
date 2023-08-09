@@ -117,6 +117,16 @@ namespace TowerDefence
             m_AIController.ApplyUnitSettings(settings);
         }
 
+        public void TakeDamage(int damage)
+        {
+            ApplyDamage(Mathf.Max(1, damage - m_Armor));
+        }
+
+        public void TakeDamage(Destructible fromDest, int damage)
+        {
+            ApplyDamage(fromDest, Mathf.Max(1, damage - m_Armor));
+        }
+
         protected override void OnDeath()
         {
             // ѕроигрывание анимации смерти, если такова€ есть.

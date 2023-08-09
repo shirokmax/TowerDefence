@@ -1,3 +1,4 @@
+using TowerDefence;
 using UnityEngine;
 
 namespace SpaceShooter
@@ -70,12 +71,12 @@ namespace SpaceShooter
             {
                 foreach (Collider2D hitCollider in hitColliders)
                 {
-                    if (hitCollider.transform.root.TryGetComponent(out Destructible dest) && dest == m_TargetDest)
+                    if (hitCollider.transform.root.TryGetComponent(out Unit unit) && unit == m_TargetDest)
                     {
                         if (m_SplashDamage == true)
                             OnMissileHit();
                         else
-                            dest.ApplyDamage(m_ParentDest, m_Damage);
+                            unit.TakeDamage(m_Damage);
 
                         OnMissileLifeEnd();
                     }
@@ -91,8 +92,8 @@ namespace SpaceShooter
             {
                 foreach (Collider2D hitCollider in hitColliders)
                 {
-                    if (hitCollider.transform.root.TryGetComponent(out Destructible dest) && dest != m_ParentDest)
-                        dest.ApplyDamage(m_ParentDest, m_Damage);
+                    if (hitCollider.transform.root.TryGetComponent(out Unit unit) && unit != m_ParentDest)
+                        unit.TakeDamage(m_ParentDest, m_Damage);
                 }
             }
         }

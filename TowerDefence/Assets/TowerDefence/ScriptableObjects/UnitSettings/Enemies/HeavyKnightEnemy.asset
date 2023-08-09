@@ -54,6 +54,7 @@ MonoBehaviour:
   m_SpeedControl: 1
   m_MoveSpeed: 0.4
   m_HitPoints: 500
+  m_Armor: 10
   m_ColliderRadius: 0.28
   m_ColliderPosition: {x: 0, y: 0.26}
   m_RandomSelectMovePointTime: 2

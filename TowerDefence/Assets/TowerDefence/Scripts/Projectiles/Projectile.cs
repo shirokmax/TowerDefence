@@ -1,3 +1,4 @@
+using TowerDefence;
 using UnityEngine;
 
 namespace SpaceShooter
@@ -41,9 +42,9 @@ namespace SpaceShooter
 
             if (hit)
             {
-                if (hit.collider.transform.root.TryGetComponent(out Destructible dest) && dest == m_TargetDest)
+                if (hit.collider.transform.root.TryGetComponent(out Unit unit) && unit == m_TargetDest)
                 {
-                    dest.ApplyDamage(m_ParentDest, m_Damage);
+                    unit.TakeDamage(m_Damage);
                     OnProjectileHit(hit.point);
                 }
             }
