@@ -3,12 +3,13 @@ using UnityEngine;
 
 namespace SpaceShooter
 {
-    public class Missile : Projectile
+    public class Projectile : Entity
     {
-        /// <summary>
-        /// Множитель размера эффекта взрыва ракеты в зависимости от радиуса урона взрыва.
-        /// </summary>
-        [SerializeField] private float m_HitEffectScaleMult = 1f;
+        [SerializeField] private float m_Speed;
+        public float Speed => m_Speed;
+
+        [SerializeField] private int m_Damage;
+        public int Damage => m_Damage;
 
         /// <summary>
         /// Границы касания ракеты других коллайдеров.
@@ -25,35 +26,47 @@ namespace SpaceShooter
         [SerializeField] private float m_SplashDamageRadius;
 
         /// <summary>
-        /// Максимальный радиус, в котором ракета может захватить первую попавшуюся цель.
-        /// </summary>
-        [SerializeField] private float m_HomingRadius;
-
-        /// <summary>
         /// Скорость плавного поворота к цели.
         /// </summary>
+        [Space]
         [SerializeField] private bool m_HomingRotateInterpolation;
         [SerializeField] private float m_HomingRotateInterpolationValue;
+
+        [Space]
+        [SerializeField] private ImpactEffect m_LaunchSFXPrefab;
+        [SerializeField] private ImpactEffect m_HitSFXPrefab;
+        [SerializeField] private ImpactEffect m_HitEffectPrefab;
+
+        /// <summary>
+        /// Множитель размера эффекта взрыва ракеты в зависимости от радиуса урона взрыва.
+        /// </summary>
+        [SerializeField] private float m_HitEffectScaleMult = 1f;
+
+        private Destructible m_ParentDest;
+        private Destructible m_TargetDest;
 
         private Vector2 m_HomingTargetPosition;
 
         private const float TARGET_POSITION_THRESHOLD = 0.2f;
 
-        protected override void ProjectileMovement()
+        private void Start()
         {
-            m_Timer += Time.deltaTime;
+            if (m_LaunchSFXPrefab != null)
+                Instantiate(m_LaunchSFXPrefab, transform.position, Quaternion.identity);
+        }
 
-            if (m_Timer >= m_Lifetime)
-                Destroy(gameObject);
-
+        private void Update()
+        {
             if (m_TargetDest != null)
             {
                 m_HomingTargetPosition = m_TargetDest.transform.position;
             }
             else if ((m_HomingTargetPosition - (Vector2)transform.position).sqrMagnitude <= TARGET_POSITION_THRESHOLD * TARGET_POSITION_THRESHOLD)
             {
-                OnMissileHit();
-                OnMissileLifeEnd();
+                if (m_SplashDamage == true) 
+                    OnHit();
+
+                OnLifeEnd();
             }
 
             Vector2 dir = m_HomingTargetPosition - (Vector2)transform.position;
@@ -74,17 +87,17 @@ namespace SpaceShooter
                     if (hitCollider.transform.root.TryGetComponent(out Unit unit) && unit == m_TargetDest)
                     {
                         if (m_SplashDamage == true)
-                            OnMissileHit();
+                            OnHit();
                         else
                             unit.TakeDamage(m_Damage);
 
-                        OnMissileLifeEnd();
+                        OnLifeEnd();
                     }
                 }
             }
         }
 
-        private void OnMissileHit()
+        private void OnHit()
         {
             Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, m_SplashDamageRadius);
 
@@ -98,12 +111,14 @@ namespace SpaceShooter
             }
         }
 
-        private void OnMissileLifeEnd()
+        private void OnLifeEnd()
         {
             if (m_HitEffectPrefab != null)
             {
                 ImpactEffect hitEffect = Instantiate(m_HitEffectPrefab, transform.position, Quaternion.identity);
-                hitEffect.transform.localScale = Vector3.one * (m_SplashDamageRadius * m_HitEffectScaleMult);
+
+                if (m_SplashDamage == true)
+                    hitEffect.transform.localScale = Vector3.one * (m_SplashDamageRadius * m_HitEffectScaleMult);
             }
 
             if (m_HitSFXPrefab != null)
@@ -112,12 +127,24 @@ namespace SpaceShooter
             Destroy(gameObject);
         }
 
+        public void SetParentShooter(Destructible dest)
+        {
+            m_ParentDest = dest;
+        }
+
+        public void SetTarget(Destructible target)
+        {
+            m_TargetDest = target;
+        }
+
+        public void AddDamage(int damage)
+        {
+            m_Damage += damage;
+        }
+
 #if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
-            UnityEditor.Handles.color = new Color(1, 1, 0, 0.05f);
-            UnityEditor.Handles.DrawSolidDisc(transform.position, transform.forward, m_HomingRadius);
-
             UnityEditor.Handles.color = new Color(1, 0, 0, 0.1f);
             UnityEditor.Handles.DrawSolidDisc(transform.position, transform.forward, m_SplashDamageRadius);
 

@@ -42,24 +42,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1227620906532891709}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38dee801695686846810f552e5400d36, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e3aa7f9669ec594fb4668e7b108fae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Nickname: Bomb
   m_Type: 2
   m_Speed: 3
-  m_Lifetime: 5
   m_Damage: 110
-  m_LaunchSFXPrefab: {fileID: 3735660353202367765, guid: 00319cb9318eb8145ae76d248be596d5, type: 3}
-  m_HitEffectPrefab: {fileID: 4669386143163473360, guid: 41e191585b1345a4e9935e7474a7f8a1, type: 3}
-  m_HitSFXPrefab: {fileID: 1846393053755643985, guid: 3b6db5c53135c76498a4afa4e89f10f7, type: 3}
-  m_HitEffectScaleMult: 1.2
   m_HitBounds: {x: 0.35, y: 0.35}
   m_SplashDamage: 1
   m_SplashDamageRadius: 0.45
-  m_HomingRadius: 1.5
   m_HomingRotateInterpolation: 0
-  m_HomingRotateInterpolationValue: 30
+  m_HomingRotateInterpolationValue: 0
+  m_LaunchSFXPrefab: {fileID: 3735660353202367765, guid: 00319cb9318eb8145ae76d248be596d5, type: 3}
+  m_HitSFXPrefab: {fileID: 1846393053755643985, guid: 3b6db5c53135c76498a4afa4e89f10f7, type: 3}
+  m_HitEffectPrefab: {fileID: 4669386143163473360, guid: 41e191585b1345a4e9935e7474a7f8a1, type: 3}
+  m_HitEffectScaleMult: 1.2
 --- !u!1 &8137961070353375396
 GameObject:
   m_ObjectHideFlags: 0
