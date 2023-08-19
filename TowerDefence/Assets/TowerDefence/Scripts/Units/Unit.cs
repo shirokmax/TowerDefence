@@ -1,6 +1,7 @@
 using UnityEngine;
 using SpaceShooter;
 using System.Collections.Generic;
+using System;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -8,6 +9,12 @@ using UnityEditor;
 
 namespace TowerDefence
 {
+    public enum ArmorType
+    {
+        Physical,
+        Magic
+    }
+
     public enum MovementType
     {
         Walking,
@@ -31,14 +38,23 @@ namespace TowerDefence
         [SerializeField] private UnitAnimationEvents m_AnimationEvents;
         public UnitAnimationEvents AnimationEvents => m_AnimationEvents;
 
+        [Space]
         [SerializeField] private MovementType m_MoveType;
         public MovementType MoveType => m_MoveType;
 
         [SerializeField] private float m_MoveSpeed;
         public float MoveSpeed => m_MoveSpeed;
 
+        [Space]
+        [SerializeField] private ArmorType m_ArmorType;
+        public ArmorType ArmorType => m_ArmorType;
+
         [SerializeField] private int m_Armor;
         public int Armor => m_Armor;
+
+        [Space]
+        [SerializeField] private DamageType m_DamageType;
+        public DamageType DamageType => m_DamageType;
 
         [SerializeField] private int m_MeleeDamage;
         public int MeleeDamage => m_MeleeDamage;
@@ -50,26 +66,6 @@ namespace TowerDefence
         [SerializeField] private float m_MeleeAttackRangeRadius;
         public float MeleeAttackRangeRadius => m_MeleeAttackRangeRadius;
 
-        //[Space]
-        //[SerializeField] private bool m_CanUsePowerups;
-        //public bool CanUsePowerups => m_CanUsePowerups;
-
-        private float m_SpeedBoostMult;
-        private float m_SpeedBoostTimer;
-        public float SpeedBoostTimer => m_SpeedBoostTimer;
-
-        private float m_InvincibleTimer;
-        public float InvincibleTimer => m_InvincibleTimer;
-
-        public float SpeedBoostLastDurationTime { get; private set; }
-        public float InvincibleLastDurationTime { get; private set; }
-
-        [HideInInspector] public bool isInvincibleWasOn;
-        [HideInInspector] public bool isSpeedBoostWasOn;
-
-        public bool IsSpeedBoostActive => m_SpeedBoostTimer > 0;
-        public bool IsInvincibleActive => m_InvincibleTimer > 0;
-
         /// <summary>
         /// ”правление скоростью передвижени€. (от -1.0 до 1.0)
         /// </summary>
@@ -78,12 +74,29 @@ namespace TowerDefence
         private static HashSet<Unit> m_AllUnits;
         public static IReadOnlyCollection<Unit> AllUnits => m_AllUnits;
 
-        #endregion
+        private static Func<int, DamageType, int, int>[] ArmorDamageFunctions =
+{
+            // ArmorType.Physical
+            (int damage, DamageType dmgType, int armor) =>
+            {
+                switch (dmgType)
+                {
+                    case DamageType.Magic: return damage;
+                    default: return Mathf.Max(1, damage - armor);
+                }
+            },
+            // ArmorType.Magic
+            (int damage, DamageType dmgType, int armor) =>
+            {
+                switch (dmgType)
+                {
+                    case DamageType.Magic: return Mathf.Max(1, damage - armor);
+                    default: return Mathf.Max(1, damage - armor / 2);
+                }
+            }
+        };
 
-        protected virtual void Awake()
-        {
-            m_SpeedBoostMult = 1;
-        }
+        #endregion
 
         private void Update()
         {
@@ -93,7 +106,7 @@ namespace TowerDefence
         private void Move()
         {
             if (SpeedControl != 0)
-                transform.Translate(SpeedControl * m_SpeedBoostMult * m_MoveSpeed * Vector3.up * Time.deltaTime);
+                transform.Translate(SpeedControl * m_MoveSpeed * Vector3.up * Time.deltaTime);
         }
 
         public virtual void ApplySettings(UnitSettings settings)
@@ -101,11 +114,13 @@ namespace TowerDefence
             if (settings == null) return;
 
             m_Nickname = settings.UnitName;
-            m_MoveType = settings.MoveType;
 
             m_MaxHitPoints = settings.HitPoints;
+            m_ArmorType = settings.ArmorType;
             m_Armor = settings.Armor;
+            m_MoveType = settings.MoveType;
             m_MoveSpeed = settings.MoveSpeed;
+            m_DamageType = settings.DamageType;
             m_MeleeDamage = settings.MeleeDamage;
             m_AttackAnimationSpeed = settings.AttackAnimationSpeed;
             m_MeleeAttackRangeRadius = settings.MeleeAttackRangeRadius;
@@ -117,14 +132,14 @@ namespace TowerDefence
             m_AIController.ApplyUnitSettings(settings);
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage, DamageType dmgType)
         {
-            ApplyDamage(Mathf.Max(1, damage - m_Armor));
+            ApplyDamage(ArmorDamageFunctions[(int)m_ArmorType](damage, dmgType, m_Armor));
         }
 
-        public void TakeDamage(Destructible fromDest, int damage)
+        public void TakeDamage(Destructible fromDest, int damage, DamageType dmgType)
         {
-            ApplyDamage(fromDest, Mathf.Max(1, damage - m_Armor));
+            ApplyDamage(fromDest, ArmorDamageFunctions[(int)m_ArmorType](damage, dmgType, m_Armor));
         }
 
         protected override void OnDeath()
@@ -171,74 +186,6 @@ namespace TowerDefence
             if (speed < 0) return;
 
             m_MoveSpeed = speed;
-        }
-
-        #region Powerups
-        private void CheckInvincible()
-        {
-            //if (IsInvincibleActive == true)
-            //    m_InvincibleTimer -= Time.fixedDeltaTime;
-
-            //if (IsInvincibleActive == false)
-            //    InvincibleOff();
-        }
-
-        private void CheckSpeedBoost()
-        {
-            //if (IsSpeedBoostActive == true)
-            //    m_SpeedBoostTimer -= Time.fixedDeltaTime;
-
-            //if (IsSpeedBoostActive == false)
-            //    m_SpeedBoostMult = 1;
-        }
-
-        public void SpeedBoostOn(float boostMult, float boostTime)
-        {
-            //isSpeedBoostWasOn = true;
-
-            //m_SpeedBoostMult = boostMult;
-            //m_SpeedBoostTimer = boostTime;
-
-            //SpeedBoostLastDurationTime = boostTime;
-        }
-
-        /// <summary>
-        /// ¬ключает неу€звимость.
-        /// </summary>
-        public void InvincibleOn()
-        {
-            //isInvincibleWasOn = true;
-
-            //if (m_Indestructible == false)
-            //    m_Indestructible = true;
-        }
-
-        /// <summary>
-        /// ¬ключает неу€звимость по таймеру.
-        /// </summary>
-        /// <param name="time">¬рем€ неу€звимости.</param>
-        public void InvincibleOn(float time)
-        {
-            //InvincibleOn();
-            //m_InvincibleTimer = time;
-
-            //InvincibleLastDurationTime = time;
-        }
-
-        /// <summary>
-        /// ¬ыключает неу€звимость.
-        /// </summary>
-        public void InvincibleOff()
-        {
-            //if (m_Indestructible == true)
-            //    m_Indestructible = false;
-        }
-
-        #endregion
-
-        public void Fire()
-        {
-            return;
         }
 
         private void OnDisable()

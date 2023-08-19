@@ -47,8 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Nickname: Fireball
   m_Type: 2
-  m_Speed: 4
+  m_DamageType: 1
   m_Damage: 100
+  m_Speed: 4
   m_HitBounds: {x: 0.25, y: 0.51}
   m_SplashDamage: 0
   m_SplashDamageRadius: 0

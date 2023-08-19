@@ -80,8 +80,9 @@ namespace TowerDefence
         [SerializeField] private string m_UnitName = "Knight";
         public string UnitName => m_UnitName;
 
-        [SerializeField] private MovementType m_MoveType = MovementType.Walking;
-        public MovementType MoveType => m_MoveType;
+        [Space]
+        [SerializeField] private DamageType m_DamageType;
+        public DamageType DamageType => m_DamageType;
 
         [SerializeField] private int m_MeleeDamage = 5;
         public int MeleeDamage => m_MeleeDamage;
@@ -97,11 +98,18 @@ namespace TowerDefence
         public float SpeedControl => m_SpeedControl;
 
         [Space]
+        [SerializeField] private MovementType m_MoveType = MovementType.Walking;
+        public MovementType MoveType => m_MoveType;
+
         [SerializeField] private float m_MoveSpeed = 1;
         public float MoveSpeed => m_MoveSpeed;
 
         [SerializeField] private int m_HitPoints = 10;
         public int HitPoints => m_HitPoints;
+
+        [Space]
+        [SerializeField] private ArmorType m_ArmorType;
+        public ArmorType ArmorType => m_ArmorType;
 
         [SerializeField] private int m_Armor = 0;
         public int Armor => m_Armor;

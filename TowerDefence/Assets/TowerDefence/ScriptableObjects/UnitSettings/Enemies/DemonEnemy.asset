@@ -41,13 +41,16 @@ MonoBehaviour:
   m_MeleeAttackSFXRate: 1
   m_AttackVoiceRate: 0.7
   m_UnitName: Demon
-  m_MoveType: 1
+  m_DamageType: 0
   m_MeleeDamage: 60
   m_AttackAnimationSpeed: 1
   m_MeleeAttackRangeRadius: 0.4
   m_SpeedControl: 1
+  m_MoveType: 1
   m_MoveSpeed: 1
   m_HitPoints: 250
+  m_ArmorType: 1
+  m_Armor: 20
   m_ColliderRadius: 0.3
   m_ColliderPosition: {x: 0, y: 0.21}
   m_RandomSelectMovePointTime: 2

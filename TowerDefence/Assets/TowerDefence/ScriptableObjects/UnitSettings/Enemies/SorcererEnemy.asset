@@ -42,13 +42,16 @@ MonoBehaviour:
   m_MeleeAttackSFXRate: 1
   m_AttackVoiceRate: 0.7
   m_UnitName: Sorcerer
-  m_MoveType: 0
+  m_DamageType: 1
   m_MeleeDamage: 40
   m_AttackAnimationSpeed: 1
   m_MeleeAttackRangeRadius: 0.3
   m_SpeedControl: 1
+  m_MoveType: 0
   m_MoveSpeed: 0.65
   m_HitPoints: 300
+  m_ArmorType: 1
+  m_Armor: 20
   m_ColliderRadius: 0.2
   m_ColliderPosition: {x: 0, y: 0.192}
   m_RandomSelectMovePointTime: 2

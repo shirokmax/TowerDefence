@@ -3,13 +3,23 @@ using UnityEngine;
 
 namespace SpaceShooter
 {
+    public enum DamageType
+    {
+        Physical,
+        Magic
+    }
+
     public class Projectile : Entity
     {
-        [SerializeField] private float m_Speed;
-        public float Speed => m_Speed;
+        [Space]
+        [SerializeField] private DamageType m_DamageType;
+        public DamageType DamageType => m_DamageType;
 
         [SerializeField] private int m_Damage;
         public int Damage => m_Damage;
+
+        [SerializeField] private float m_Speed;
+        public float Speed => m_Speed;
 
         /// <summary>
         /// Границы касания ракеты других коллайдеров.
@@ -89,7 +99,7 @@ namespace SpaceShooter
                         if (m_SplashDamage == true)
                             OnHit();
                         else
-                            unit.TakeDamage(m_Damage);
+                            unit.TakeDamage(m_Damage, m_DamageType);
 
                         OnLifeEnd();
                     }
@@ -106,7 +116,7 @@ namespace SpaceShooter
                 foreach (Collider2D hitCollider in hitColliders)
                 {
                     if (hitCollider.transform.root.TryGetComponent(out Unit unit) && unit != m_ParentDest)
-                        unit.TakeDamage(m_ParentDest, m_Damage);
+                        unit.TakeDamage(m_ParentDest, m_Damage, m_DamageType);
                 }
             }
         }

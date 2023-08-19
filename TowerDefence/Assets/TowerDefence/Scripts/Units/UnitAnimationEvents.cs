@@ -22,7 +22,7 @@ namespace TowerDefence
         public void AttackAnimationDamage()
         {
             if (m_TargetUnit != null)
-                m_TargetUnit.TakeDamage(m_Unit.MeleeDamage);
+                m_TargetUnit.TakeDamage(m_Unit.MeleeDamage, m_Unit.DamageType);
         }
 
         public void AttackAnimationSound()

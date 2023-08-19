@@ -13,10 +13,8 @@ namespace TowerDefence
         private HeroSkill[] m_HeroSkills;
         public HeroSkill[] HeroSkills => m_HeroSkills;
 
-        protected override void Awake()
+        private void Awake()
         {
-            base.Awake();
-
             m_HeroSkills = transform.GetComponentsInChildren<HeroSkill>();
         }
     }
