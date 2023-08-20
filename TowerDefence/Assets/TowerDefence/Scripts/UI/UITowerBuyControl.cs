@@ -42,5 +42,10 @@ namespace TowerDefence
         {
             m_BuildSpot = spot;
         }
+
+        public void SetTowerSettings(TowerSettings settings)
+        {
+            m_TowerSettings = settings;
+        }
     }
 }

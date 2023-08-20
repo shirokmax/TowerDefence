@@ -19194,12 +19194,44 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 7093214561679363977}
+    - target: {fileID: 5154615393148102394, guid: e6cb80a8ad86c954f82ae8295ed9b658, type: 3}
+      propertyPath: m_TowerBuyControlPrefab
+      value: 
+      objectReference: {fileID: 8311934763706665370, guid: 53d88657c298eba469b737862c83cad6, type: 3}
+    - target: {fileID: 5154615393148102394, guid: e6cb80a8ad86c954f82ae8295ed9b658, type: 3}
+      propertyPath: m_TowerBuyControlsOffset
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154615393148102394, guid: e6cb80a8ad86c954f82ae8295ed9b658, type: 3}
+      propertyPath: m_TowersSettings.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154615393148102394, guid: e6cb80a8ad86c954f82ae8295ed9b658, type: 3}
+      propertyPath: m_TowersSettings.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 571b65cdcbae15140ba85e503d7ad6b9, type: 2}
+    - target: {fileID: 5154615393148102394, guid: e6cb80a8ad86c954f82ae8295ed9b658, type: 3}
+      propertyPath: m_TowersSettings.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0852b7c128a50dc42b4352330e5c5683, type: 2}
+    - target: {fileID: 5154615393148102394, guid: e6cb80a8ad86c954f82ae8295ed9b658, type: 3}
+      propertyPath: m_TowersSettings.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 464edfe869147034a8c41072a81e45d2, type: 2}
+    - target: {fileID: 5154615393148102394, guid: e6cb80a8ad86c954f82ae8295ed9b658, type: 3}
+      propertyPath: m_TowersSettings.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6e0a84b7e9f5ea744b055ee1f9f02175, type: 2}
     - target: {fileID: 5710102501182892082, guid: e6cb80a8ad86c954f82ae8295ed9b658, type: 3}
       propertyPath: m_Name
       value: SharedSceneObjects
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3033135998707009800, guid: e6cb80a8ad86c954f82ae8295ed9b658, type: 3}
+    - {fileID: 568804214808466795, guid: e6cb80a8ad86c954f82ae8295ed9b658, type: 3}
+    - {fileID: 7783514548769084169, guid: e6cb80a8ad86c954f82ae8295ed9b658, type: 3}
+    - {fileID: 943532175424125126, guid: e6cb80a8ad86c954f82ae8295ed9b658, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6cb80a8ad86c954f82ae8295ed9b658, type: 3}
