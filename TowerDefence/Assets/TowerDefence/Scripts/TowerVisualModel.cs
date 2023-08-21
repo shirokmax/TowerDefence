@@ -10,6 +10,7 @@ namespace TowerDefence
         public void ApplySettings(TowerSettings settings)
         {
             m_TowerSprite.sprite = settings.TowerSprite;
+            m_TowerSprite.color = settings.TowerSpriteColor;
             m_TowerSprite.transform.localScale = new Vector3(settings.TowerSpriteScale.x, settings.TowerSpriteScale.y, 1);
 
             m_ShadowSprite.transform.localScale = new Vector3(settings.ShadowSpriteScale.x, settings.ShadowSpriteScale.y, 1);

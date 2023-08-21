@@ -146,32 +146,32 @@ namespace SpaceShooter
             return true;
         }
 
-        public void TryBuild(TowerSettings towerProps, Transform spot)
+        public void TryBuild(TowerSettings towerSedttings, BuildSpot spot)
         {
-            if (RemoveGold(towerProps.GoldCost) == true)
+            if (RemoveGold(towerSedttings.GoldCost) == true)
             {
-                if (m_TowerBuildProgressVFXPrefab != null)
+                if (m_TowerBuildProgressVFXPrefab != null && towerSedttings.StartTower)
                 {
-                    var buildProgress = Instantiate(m_TowerBuildProgressVFXPrefab, spot.position, Quaternion.identity);
+                    var buildProgress = Instantiate(m_TowerBuildProgressVFXPrefab, spot.transform.root.position, Quaternion.identity);
                     buildProgress.SetLifeTime(m_TowerBuildTime);
 
-                    StartCoroutine(BuildTowerWithTime(towerProps, spot));
+                    StartCoroutine(BuildTowerWithTime(towerSedttings, spot));
                 }
                 else
                 {
-                    BuildTower(towerProps, spot);
-                    SpawnTowerBuildCompleteSFX();
+                    BuildTower(towerSedttings, spot); 
                 }
 
-                spot.gameObject.SetActive(false);
+                spot.transform.root.gameObject.SetActive(false);
                 ClickSpot.EventOnSpotClick.Invoke(null);
             }
         }
 
-        private void BuildTower(TowerSettings towerProps, Transform spot)
+        private void BuildTower(TowerSettings towerSettings, BuildSpot spot)
         {
-            Tower tower = Instantiate(m_TowerPrefab, spot.position, Quaternion.identity);
-            tower.ApplySettings(towerProps);
+            Tower tower = Instantiate(m_TowerPrefab, spot.transform.root.position, Quaternion.identity);
+            tower.ApplySettings(towerSettings);
+            tower.BuildSpot.SetUnitsStartHoldPointPos(spot.UnitsStartHoldPoint);
 
             //Выключаем скрипт башни, если она построилась после конца уровня
             if (LevelController.Instance.IsLevelCompleted == true)
@@ -180,11 +180,13 @@ namespace SpaceShooter
                 return;
             }
 
-            if (towerProps.SpawnUnits == true)
-                tower.UnitSpawner.SetUnitsHoldPointPosition(spot.GetComponentInChildren<ClickSpot>().UnitsStartHoldPoint);
+            if (towerSettings.SpawnUnits == true)
+                tower.UnitSpawner.SetUnitsHoldPointPosition(spot.GetComponentInChildren<BuildSpot>().UnitsStartHoldPoint);
+
+            Destroy(spot.transform.root.gameObject);
         }
 
-        private IEnumerator BuildTowerWithTime(TowerSettings towerProps, Transform spot)
+        private IEnumerator BuildTowerWithTime(TowerSettings towerProps, BuildSpot spot)
         {
             yield return new WaitForSeconds(m_TowerBuildTime);       
 

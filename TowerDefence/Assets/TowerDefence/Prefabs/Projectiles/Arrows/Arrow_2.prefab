@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7303322928055472411}
   - component: {fileID: 6206376449986438654}
   m_Layer: 0
-  m_Name: Arrow
+  m_Name: Arrow_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,16 +47,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Nickname: Arrow
   m_Type: 2
+  m_DamageType: 0
+  m_Damage: 60
   m_Speed: 8
-  m_Damage: 40
   m_HitBounds: {x: 0.16, y: 0.52}
   m_SplashDamage: 0
   m_SplashDamageRadius: 0
   m_HomingRotateInterpolation: 0
   m_HomingRotateInterpolationValue: 0
   m_LaunchSFXPrefab: {fileID: 1846393053755643985, guid: c783f17d99c92794ab9c44a05d7f043b, type: 3}
-  m_HitEffectPrefab: {fileID: 0}
   m_HitSFXPrefab: {fileID: 0}
+  m_HitEffectPrefab: {fileID: 0}
   m_HitEffectScaleMult: 1
 --- !u!1 &8137961070353375396
 GameObject:

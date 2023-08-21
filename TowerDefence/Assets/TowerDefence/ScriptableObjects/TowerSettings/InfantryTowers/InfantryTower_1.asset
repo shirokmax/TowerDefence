@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2f504daa5fe79f45bbafeda4e6a9066, type: 3}
-  m_Name: InfantryTower
+  m_Name: InfantryTower_1
   m_EditorClassIdentifier: 
   m_Nickname: Infantry Tower
   m_TowerGUISprite: {fileID: 21300000, guid: 8b5a213ae0241d44f9a68cf6cbca3f89, type: 3}
@@ -18,7 +18,6 @@ MonoBehaviour:
   m_TowerSpriteScale: {x: 0.9, y: 0.9}
   m_ShadowSpriteScale: {x: 3.2, y: 3.2}
   m_ShadowPosition: {x: 0, y: -0.5}
-  m_TowerPositionOffset: {x: 0, y: 0.2}
   m_TurretProps: {fileID: 0}
   m_TurretPosition: {x: 0, y: 0}
   m_Radius: 2
@@ -36,6 +35,8 @@ MonoBehaviour:
   - {fileID: 1846393053755643985, guid: 9a8c9eb127c06a545b8c96a3ebc6e450, type: 3}
   - {fileID: 1846393053755643985, guid: 60832765179a52c4781d837af91071c8, type: 3}
   - {fileID: 1846393053755643985, guid: 0f95a8fd776aad94492a4bc591a1a923, type: 3}
+  m_StartTower: 1
+  m_UpgradesTo: []
   m_AttackRangeUpgrade: {fileID: 0}
   m_DamageUpgrade: {fileID: 0}
   m_AttackSpeedUpgrade: {fileID: 0}

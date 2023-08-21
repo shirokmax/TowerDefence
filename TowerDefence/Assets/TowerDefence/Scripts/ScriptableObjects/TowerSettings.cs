@@ -16,6 +16,9 @@ namespace TowerDefence
         [SerializeField] private Sprite m_TowerSprite;
         public Sprite TowerSprite => m_TowerSprite;
 
+        [SerializeField] private Color m_TowerSpriteColor = Color.white;
+        public Color TowerSpriteColor => m_TowerSpriteColor;
+
         [SerializeField] private Vector2 m_TowerSpriteScale = Vector2.one;
         public Vector2 TowerSpriteScale => m_TowerSpriteScale;
 
@@ -24,10 +27,6 @@ namespace TowerDefence
 
         [SerializeField] private Vector2 m_ShadowPosition = Vector2.zero;
         public Vector2 ShadowPosition => m_ShadowPosition;
-
-        [Space]
-        [SerializeField] private Vector2 m_TowerPositionOffset = Vector2.zero;
-        public Vector2 TowerPositionOffset => m_TowerPositionOffset;
 
         [Space]
         [SerializeField] private TurretProperties m_TurretProps;
@@ -65,6 +64,13 @@ namespace TowerDefence
 
         [SerializeField] private ImpactEffect[] m_UnitSpawnSFXPrefabs;
         public ImpactEffect[] UnitSpawnSFXPrefabs => m_UnitSpawnSFXPrefabs;
+
+        [Space]
+        [SerializeField] private bool m_StartTower;
+        public bool StartTower => m_StartTower;
+
+        [SerializeField] private TowerSettings[] m_UpgradesTo;
+        public TowerSettings[] UpgradesTo => m_UpgradesTo;
 
         [Space]
         [SerializeField] private UpgradeAsset m_AttackRangeUpgrade;

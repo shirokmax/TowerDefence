@@ -5,9 +5,6 @@ namespace SpaceShooter
     public class Turret : MonoBehaviour
     {
         #region Properties
-        [SerializeField] private TurretType m_Type;
-        public TurretType Type => m_Type;
-
         [SerializeField] private TurretProperties m_StartTurretProperties;
 
         private TurretProperties m_TurretProperties;
@@ -93,7 +90,6 @@ namespace SpaceShooter
             AssignLoadoutLastDurationTime = 0;
 
             m_StartTurretProperties = props;
-            m_Type = props.Type;
         }
 
         #endregion

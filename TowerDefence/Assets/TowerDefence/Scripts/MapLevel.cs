@@ -53,7 +53,7 @@ namespace TowerDefence
             return stars;
         }
 
-        private void OnLevelClicked(Transform mapLevel)
+        private void OnLevelClicked(ClickSpot mapLevel)
         {
             if (mapLevel == null)
             {
@@ -68,7 +68,7 @@ namespace TowerDefence
                 return;
             }
 
-            if (transform.root == mapLevel)
+            if (transform.root == mapLevel.transform.root)
             {
                 if (m_LevelSelected == false)
                 {

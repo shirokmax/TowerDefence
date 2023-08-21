@@ -12,8 +12,7 @@ namespace TowerDefence
         [SerializeField] private Button m_BuyButton;
         [SerializeField] private Text m_GoldText;
 
-        private Transform m_BuildSpot;
-        public Transform BuildSpot => m_BuildSpot;
+        private BuildSpot m_BuildSpot;
 
         private void Start()
         {
@@ -38,7 +37,7 @@ namespace TowerDefence
             Player.Instance.TryBuild(m_TowerSettings, m_BuildSpot);
         }
 
-        public void SetBuildSpot(Transform spot)
+        public void SetBuildSpot(BuildSpot spot)
         {
             m_BuildSpot = spot;
         }

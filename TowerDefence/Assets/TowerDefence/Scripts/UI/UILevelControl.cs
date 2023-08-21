@@ -24,11 +24,11 @@ namespace TowerDefence
             gameObject.SetActive(false);
         }
 
-        private void MoveToLevelSpot(Transform levelSpot)
+        private void MoveToLevelSpot(ClickSpot levelSpot)
         {
             if (levelSpot != null)
             {
-                Vector2 pos = Camera.main.WorldToScreenPoint(levelSpot.position);
+                Vector2 pos = Camera.main.WorldToScreenPoint(levelSpot.transform.root.position);
 
                 float xSizeNormal = m_Canvas.referenceResolution.x / Screen.width;
                 float ySizeNormal = m_Canvas.referenceResolution.y / Screen.height;
@@ -36,7 +36,7 @@ namespace TowerDefence
 
                 m_RectTransform.anchoredPosition = posNormalized;
 
-                m_selectedEpisode = levelSpot.root.GetComponent<MapLevel>().Episode;
+                m_selectedEpisode = levelSpot.transform.root.GetComponent<MapLevel>().Episode;
 
                 gameObject.SetActive(true);
             }

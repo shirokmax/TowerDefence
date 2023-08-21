@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 211fe1edbf283c144a07f7c82289f42a, type: 3}
-  m_Name: ArcherTurret
+  m_Name: ArcherTurret_1
   m_EditorClassIdentifier: 
   m_Type: 0
   m_ProjectilePrefab: {fileID: 6206376449986438654, guid: 97b93cbe91b31324093fe98c2f71e785, type: 3}

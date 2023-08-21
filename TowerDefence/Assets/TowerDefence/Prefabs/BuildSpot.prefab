@@ -127,7 +127,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5566807516242113670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.241, y: -1.387, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 4361250618367315619}
   - component: {fileID: 8540737451586921114}
   - component: {fileID: 3390353030652964554}
-  - component: {fileID: 8977856353016507657}
+  - component: {fileID: 5281311902805767412}
   m_Layer: 0
   m_Name: BuildSpotRect
   m_TagString: Untagged
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8977856353016507657
+--- !u!114 &5281311902805767412
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -223,9 +223,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6622022997297524908}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29bf425916b28dc4ebcf9a5f2f9c5cf8, type: 3}
+  m_Script: {fileID: 11500000, guid: a9512b12b12f88f42bc0c4501e2882f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_BuildableTowers:
+  - {fileID: 11400000, guid: 571b65cdcbae15140ba85e503d7ad6b9, type: 2}
+  - {fileID: 11400000, guid: 0852b7c128a50dc42b4352330e5c5683, type: 2}
+  - {fileID: 11400000, guid: 464edfe869147034a8c41072a81e45d2, type: 2}
+  - {fileID: 11400000, guid: 6e0a84b7e9f5ea744b055ee1f9f02175, type: 2}
   m_UnitsStartHoldPoint: {fileID: 5951760977357485522}
 --- !u!1 &8645808610490173205
 GameObject:

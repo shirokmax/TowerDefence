@@ -23,6 +23,10 @@ namespace TowerDefence
         public AIControllerSpawner UnitSpawner => m_UnitSpawner;
 
         [Space]
+        [SerializeField] private BuildSpot m_BuildSpot;
+        public BuildSpot BuildSpot => m_BuildSpot;
+
+        [Space]
         [SerializeField] private UpgradeAsset m_AttackRangeUpgrade;
         [SerializeField] private UpgradeAsset m_DamageUpgrade;
         [SerializeField] private UpgradeAsset m_AttackSpeedUpgrade;
@@ -105,9 +109,9 @@ namespace TowerDefence
             m_MainTurret.transform.localPosition = new Vector3(settings.TurretPosition.x, settings.TurretPosition.y, 0);
             m_Radius = settings.Radius;
 
-            transform.position += new Vector3(settings.TowerPositionOffset.x, settings.TowerPositionOffset.y, 0);
-
             m_UnitSpawner.enabled = settings.SpawnUnits;
+
+            m_BuildSpot.SetBuildableTowers(settings.UpgradesTo);
 
             m_AttackRangeUpgrade = settings.AttackRangeUpgrade;
             m_DamageUpgrade = settings.DamageUpgrade;
