@@ -14,6 +14,11 @@ namespace SpaceShooter
         [SerializeField] private int m_Gold;
         public int Gold => m_Gold;
 
+        [SerializeField] private float m_MaxMana = 100f;
+        public float MaxMana => m_MaxMana;
+
+        [SerializeField] private float m_ManaRegenPerSecond;
+
         [Space]
         [SerializeField] private Tower m_TowerPrefab;
         [Min(0f)][SerializeField] private float m_TowerBuildTime;
@@ -25,6 +30,9 @@ namespace SpaceShooter
 
         [Space]
         [SerializeField] private Transform m_HeroRespawnPoint;
+
+        private float m_Mana;
+        public float Mana => m_Mana;
 
         private Hero m_ActiveHero;
         public Hero ActiveHero => m_ActiveHero;
@@ -46,6 +54,7 @@ namespace SpaceShooter
 
         private UnityEvent m_EventOnChangeLives = new UnityEvent();
         private UnityEvent m_EventOnChangeGold = new UnityEvent();
+        private UnityEvent m_EventOnChangeMana = new UnityEvent();
 
         private UnityEvent m_EventOnRespawnHero = new UnityEvent();
         public UnityEvent EventOnRespawnHero => m_EventOnRespawnHero;
@@ -65,11 +74,19 @@ namespace SpaceShooter
             m_EventOnChangeLives.Invoke();
         }
 
+        public void ManaChangeSubscribe(UnityAction action)
+        {
+            m_EventOnChangeMana.AddListener(action);
+            m_EventOnChangeMana.Invoke();
+        }
+
         #endregion
 
         protected override void Awake()
         {
             base.Awake();
+
+            m_Mana = m_MaxMana;
 
             if (m_ActiveHero != null)
                 Destroy(m_ActiveHero.gameObject);
@@ -82,23 +99,26 @@ namespace SpaceShooter
 
         private void Update()
         {
-            if (LevelSequenceController.PlayerHero == null) return;
-
-            if (m_ActiveHero == null)
+            if (LevelSequenceController.PlayerHero != null)
             {
-                m_HeroRespawnTimer.RemoveTime(Time.deltaTime);
-
-                if (m_HeroRespawnTimer.IsFinished == true)
+                if (m_ActiveHero == null)
                 {
-                    RespawnHero();
+                    m_HeroRespawnTimer.RemoveTime(Time.deltaTime);
 
-                    if (ActiveHero.VisualModel.RespawnVoiceSFXPrefabs.Length > 0)
+                    if (m_HeroRespawnTimer.IsFinished == true)
                     {
-                        int index = Random.Range(0, ActiveHero.VisualModel.RespawnVoiceSFXPrefabs.Length);
-                        Instantiate(ActiveHero.VisualModel.RespawnVoiceSFXPrefabs[index]);
+                        RespawnHero();
+
+                        if (ActiveHero.VisualModel.RespawnVoiceSFXPrefabs.Length > 0)
+                        {
+                            int index = Random.Range(0, ActiveHero.VisualModel.RespawnVoiceSFXPrefabs.Length);
+                            Instantiate(ActiveHero.VisualModel.RespawnVoiceSFXPrefabs[index]);
+                        }
                     }
                 }
             }
+
+            ManaRegeneration();
         }
 
         private void RespawnHero()
@@ -144,6 +164,34 @@ namespace SpaceShooter
             m_EventOnChangeGold?.Invoke();
 
             return true;
+        }
+
+        public void AddMana(float value)
+        {
+            if (m_Mana == m_MaxMana) return;
+
+            m_Mana = Mathf.Clamp(m_Mana + value, 0, m_MaxMana);
+
+            m_EventOnChangeMana?.Invoke();
+        }
+
+        public bool RemoveMana(float value)
+        {
+            if (value == 0f) return true;
+
+            if (m_Mana - value >= 0)
+            {
+                m_Mana -= value;
+                m_EventOnChangeMana?.Invoke();
+                return true;
+            }
+
+            return false;
+        }
+
+        private void ManaRegeneration()
+        {
+            AddMana(m_ManaRegenPerSecond * Time.deltaTime);
         }
 
         public void TryBuild(TowerSettings towerSettings, BuildSpot spot)

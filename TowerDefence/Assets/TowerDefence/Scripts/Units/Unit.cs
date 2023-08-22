@@ -71,6 +71,8 @@ namespace TowerDefence
         /// </summary>
         public float SpeedControl { get; set; }
 
+        private float m_MoveSpeedBackup;
+
         private static HashSet<Unit> m_AllUnits;
         public static IReadOnlyCollection<Unit> AllUnits => m_AllUnits;
 
@@ -165,6 +167,17 @@ namespace TowerDefence
             {
                 base.OnDeath();
             }
+        }
+
+        public void ChangeMoveSpeed(float speedRate)
+        {
+            m_MoveSpeedBackup = m_MoveSpeed;
+            m_MoveSpeed *= speedRate;
+        }
+
+        public void RestoreMoveSpeed()
+        {
+            m_MoveSpeed = m_MoveSpeedBackup;
         }
 
         public void SetMaxHitPoints(int hp)

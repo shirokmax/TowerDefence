@@ -18,6 +18,9 @@ namespace TowerDefence
         [Space]
         [SerializeField] private ImpactEffect m_WaveStartSFXPrefab;
 
+        private static UnityEvent<Enemy> m_EventOnEnemySpawn;
+        public static UnityEvent<Enemy> EventOnEnemySpawn => m_EventOnEnemySpawn;
+
         private EnemyWave[] m_Waves;
         private int m_WaveIndex;
 
@@ -46,6 +49,8 @@ namespace TowerDefence
 
             //Берем волны из всех дочерних объектов
             m_Waves = GetComponentsInChildren<EnemyWave>();
+
+            m_EventOnEnemySpawn ??= new UnityEvent<Enemy>();
         }
 
         private void Start()
@@ -111,6 +116,8 @@ namespace TowerDefence
 
                         m_ActiveEnemyUnitsCount++;
                         enemy.EventOnDestroy.AddListener(OnEnemyUnitDeath);
+
+                        m_EventOnEnemySpawn?.Invoke(enemy);
 
                         yield return new WaitForSeconds(m_Waves[m_WaveIndex].DelayBetweenSpawn);
                     }

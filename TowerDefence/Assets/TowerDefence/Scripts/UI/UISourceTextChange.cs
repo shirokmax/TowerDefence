@@ -7,6 +7,7 @@ namespace TowerDefence
     public enum SourceType
     {
         Gold,
+        Mana,
         Lives,
         Waves
     }
@@ -15,6 +16,7 @@ namespace TowerDefence
     public class UISourceTextChange : MonoBehaviour
     {
         [SerializeField] private SourceType m_SoureType;
+        [SerializeField] private Image m_FillImage;
 
         private Text m_Text;
 
@@ -32,6 +34,10 @@ namespace TowerDefence
             {
                 case SourceType.Gold:
                     Player.Instance.GoldChangeSubscribe(OnGoldChange);
+                    break;
+
+                case SourceType.Mana:
+                    Player.Instance.ManaChangeSubscribe(OnManaChange);
                     break;
 
                 case SourceType.Lives:
@@ -54,6 +60,14 @@ namespace TowerDefence
         private void OnGoldChange()
         {
             m_Text.text = Player.Instance.Gold.ToString();
+        }
+
+        private void OnManaChange()
+        {
+            if (m_FillImage != null)
+                m_FillImage.fillAmount = Player.Instance.Mana / Player.Instance.MaxMana;
+
+            m_Text.text = "mana " + ((int)Player.Instance.Mana);
         }
 
         private void OnLivesChange()
