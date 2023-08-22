@@ -12,10 +12,7 @@ namespace TowerDefence
 
         public void SetBuildableTowers(TowerSettings[] buildableTowers)
         {
-            if (buildableTowers == null || buildableTowers.Length == 0)
-                Destroy(transform.parent.gameObject);
-            else
-                m_BuildableTowers = buildableTowers;
+            m_BuildableTowers = buildableTowers;
         }
 
         public void SetUnitsStartHoldPointPos(Transform point)

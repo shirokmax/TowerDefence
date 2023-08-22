@@ -38,6 +38,9 @@ namespace TowerDefence
 
         private Enemy m_Target;
 
+        private int m_TotalCost;
+        public int TotalCost => m_TotalCost;
+
         protected override void Start()
         {
             base.Start();
@@ -97,6 +100,12 @@ namespace TowerDefence
             }
 
             return potentialTarget;
+        }
+
+        public void SetTotalCost(int cost)
+        {
+            if (cost < 0) m_TotalCost = 0;
+            else m_TotalCost = cost;
         }
 
         public void ApplySettings(TowerSettings settings)

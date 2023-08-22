@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2f504daa5fe79f45bbafeda4e6a9066, type: 3}
-  m_Name: MageTower_1
+  m_Name: MageTower_3
   m_EditorClassIdentifier: 
   m_Nickname: Mage Tower
-  m_TowerGUISprite: {fileID: 21300000, guid: f697ebfc68b65054ea1a20f3ae6ddb1d, type: 3}
+  m_TowerGUISprite: {fileID: 21300000, guid: 45ff100d377825b4fa8fa20d1a47b285, type: 3}
   m_TowerSprite: {fileID: 21300000, guid: 298636722737c4b41816506cd4bc994f, type: 3}
-  m_TowerSpriteColor: {r: 1, g: 1, b: 1, a: 1}
+  m_TowerSpriteColor: {r: 0.627451, g: 0, b: 1, a: 1}
   m_TowerSpriteScale: {x: 1.2, y: 1.2}
   m_ShadowSpriteScale: {x: 3.2, y: 3.2}
   m_ShadowPosition: {x: 0, y: -0.52}
-  m_TurretProps: {fileID: 11400000, guid: 78cc50cf7ea26bb4da35d1a5c1f7059f, type: 2}
+  m_TurretProps: {fileID: 11400000, guid: ef5cc8cb8be75354181a464be78d084c, type: 2}
   m_TurretPosition: {x: 0, y: 0}
-  m_Radius: 3
-  m_GoldCost: 200
+  m_Radius: 3.6
+  m_GoldCost: 360
   m_SpawnUnits: 0
   m_UnitSpawnerPosition: {x: 0, y: 0}
   m_UnitSpawnerRadius: 0.13
@@ -30,9 +30,8 @@ MonoBehaviour:
   m_UnitsSpawnCount: 0
   m_UnitsRespawnTime: 0
   m_UnitSpawnSFXPrefabs: []
-  m_StartTower: 1
-  m_UpgradesTo:
-  - {fileID: 11400000, guid: 71556d8d230fc1d448a974aedc0d84e6, type: 2}
+  m_StartTower: 0
+  m_UpgradesTo: []
   m_AttackRangeUpgrade: {fileID: 11400000, guid: 53e6ca1fea68a784ab1b0ab9cba4177d, type: 2}
   m_DamageUpgrade: {fileID: 11400000, guid: ae5fe24a4fbb7b94b8881c8dcc3caaf8, type: 2}
   m_AttackSpeedUpgrade: {fileID: 11400000, guid: dcb60ef3ced54354eb806bcc002a4037, type: 2}

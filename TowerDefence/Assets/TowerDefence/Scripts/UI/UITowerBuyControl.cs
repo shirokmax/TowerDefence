@@ -6,13 +6,13 @@ namespace TowerDefence
 {
     public class UITowerBuyControl : MonoBehaviour
     {
-        [SerializeField] private TowerSettings m_TowerSettings;
+        [SerializeField] protected TowerSettings m_TowerSettings;
 
         [Space]
-        [SerializeField] private Button m_BuyButton;
-        [SerializeField] private Text m_GoldText;
+        [SerializeField] protected Button m_BuyButton;
+        [SerializeField] protected Text m_GoldText;
 
-        private BuildSpot m_BuildSpot;
+        protected BuildSpot m_BuildSpot;
 
         private void Start()
         {

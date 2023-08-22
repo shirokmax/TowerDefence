@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7985813544733115108}
   - component: {fileID: 1846393053755643985}
   m_Layer: 0
-  m_Name: BuyUpgradeButtonSFX
+  m_Name: TransactionButtonSFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2f504daa5fe79f45bbafeda4e6a9066, type: 3}
-  m_Name: InfantryTower_1
+  m_Name: InfantryTower_3
   m_EditorClassIdentifier: 
   m_Nickname: Infantry Tower
-  m_TowerGUISprite: {fileID: 21300000, guid: 8b5a213ae0241d44f9a68cf6cbca3f89, type: 3}
-  m_TowerSprite: {fileID: -388973995, guid: cc5454dafb0977048bc76f88899ca413, type: 3}
+  m_TowerGUISprite: {fileID: 21300000, guid: 369000fd0e923cb499755450e60be114, type: 3}
+  m_TowerSprite: {fileID: 2121434376, guid: cc5454dafb0977048bc76f88899ca413, type: 3}
   m_TowerSpriteColor: {r: 1, g: 1, b: 1, a: 1}
   m_TowerSpriteScale: {x: 0.9, y: 0.9}
   m_ShadowSpriteScale: {x: 3.2, y: 3.2}
   m_ShadowPosition: {x: 0, y: -0.5}
   m_TurretProps: {fileID: 0}
   m_TurretPosition: {x: 0, y: 0}
-  m_Radius: 2
-  m_GoldCost: 150
+  m_Radius: 2.5
+  m_GoldCost: 250
   m_SpawnUnits: 1
   m_UnitSpawnerPosition: {x: 0, y: -0.6}
   m_UnitSpawnerRadius: 0.13
-  m_UnitSettings: {fileID: 11400000, guid: af58903c5e5d0554dab312fe9cd8d663, type: 2}
+  m_UnitSettings: {fileID: 11400000, guid: c80bdb42c6642624abba033095caf58b, type: 2}
   m_UnitsSpawnCount: 3
   m_UnitsRespawnTime: 20
   m_UnitSpawnSFXPrefabs:
@@ -36,9 +36,8 @@ MonoBehaviour:
   - {fileID: 1846393053755643985, guid: 9a8c9eb127c06a545b8c96a3ebc6e450, type: 3}
   - {fileID: 1846393053755643985, guid: 60832765179a52c4781d837af91071c8, type: 3}
   - {fileID: 1846393053755643985, guid: 0f95a8fd776aad94492a4bc591a1a923, type: 3}
-  m_StartTower: 1
-  m_UpgradesTo:
-  - {fileID: 11400000, guid: 76da987ee32991c4f9fc931fa2508376, type: 2}
+  m_StartTower: 0
+  m_UpgradesTo: []
   m_AttackRangeUpgrade: {fileID: 0}
   m_DamageUpgrade: {fileID: 0}
   m_AttackSpeedUpgrade: {fileID: 0}

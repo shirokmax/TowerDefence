@@ -146,20 +146,20 @@ namespace SpaceShooter
             return true;
         }
 
-        public void TryBuild(TowerSettings towerSedttings, BuildSpot spot)
+        public void TryBuild(TowerSettings towerSettings, BuildSpot spot)
         {
-            if (RemoveGold(towerSedttings.GoldCost) == true)
+            if (RemoveGold(towerSettings.GoldCost) == true)
             {
-                if (m_TowerBuildProgressVFXPrefab != null && towerSedttings.StartTower)
+                if (m_TowerBuildProgressVFXPrefab != null && towerSettings.StartTower)
                 {
                     var buildProgress = Instantiate(m_TowerBuildProgressVFXPrefab, spot.transform.root.position, Quaternion.identity);
                     buildProgress.SetLifeTime(m_TowerBuildTime);
 
-                    StartCoroutine(BuildTowerWithTime(towerSedttings, spot));
+                    StartCoroutine(BuildTowerWithTime(towerSettings, spot));
                 }
                 else
                 {
-                    BuildTower(towerSedttings, spot); 
+                    BuildTower(towerSettings, spot); 
                 }
 
                 spot.transform.root.gameObject.SetActive(false);
@@ -171,6 +171,12 @@ namespace SpaceShooter
         {
             Tower tower = Instantiate(m_TowerPrefab, spot.transform.root.position, Quaternion.identity);
             tower.ApplySettings(towerSettings);
+
+            if (spot.transform.root.TryGetComponent(out Tower twr))
+                tower.SetTotalCost(twr.TotalCost + towerSettings.GoldCost);
+            else
+                tower.SetTotalCost(towerSettings.GoldCost);
+
             tower.BuildSpot.SetUnitsStartHoldPointPos(spot.UnitsStartHoldPoint);
 
             //Выключаем скрипт башни, если она построилась после конца уровня

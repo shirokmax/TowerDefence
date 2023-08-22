@@ -1,5 +1,6 @@
 using UnityEngine;
 using TowerDefence;
+using System.Collections.Generic;
 
 namespace SpaceShooter
 {
@@ -28,12 +29,15 @@ namespace SpaceShooter
         [SerializeField] private ImpactEffect[] m_UnitSpawnSFXPrefabs;
 
         private Transform[] m_HoldPoints;
+        private List<Unit> m_CurrentSpawnedUnits;
 
         private bool m_SpawnSFXPlayed;
 
         protected override void Awake()
         {
             base.Awake();
+
+            m_CurrentSpawnedUnits = new List<Unit>();
 
             if (m_AIBehaviour == AIBehaviour.HoldPosition)
             {
@@ -73,6 +77,7 @@ namespace SpaceShooter
 
                     dest.SetTeamId(m_TeamId);
                     dest.EventOnDestroy.AddListener(OnDestroyEntity);
+                    dest.EventOnDestroy.AddListener(() => m_CurrentSpawnedUnits.Remove(unit));
 
                     AIController unitAI = unit.GetComponent<AIController>();
 
@@ -107,7 +112,7 @@ namespace SpaceShooter
                     }
 
                     m_CurrentSpawnedCount++;
-
+                    m_CurrentSpawnedUnits.Add(unit);
                     m_Timer = m_RespawnTime;
 
                     if (m_UnitSpawnSFXPrefabs.Length > 0 && m_SpawnSFXPlayed == false)
@@ -115,9 +120,15 @@ namespace SpaceShooter
                         int index = Random.Range(0, m_UnitSpawnSFXPrefabs.Length);
                         Instantiate(m_UnitSpawnSFXPrefabs[index]);
                         m_SpawnSFXPlayed = true;
-                    }    
+                    }
                 }
             }
+        }
+
+        private void OnDestroy()
+        {
+            foreach (Unit unit in m_CurrentSpawnedUnits)
+                Destroy(unit.gameObject);
         }
 
         #region Set Parameters

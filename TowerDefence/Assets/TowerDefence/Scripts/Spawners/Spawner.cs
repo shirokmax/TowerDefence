@@ -64,20 +64,20 @@ namespace SpaceShooter
             }
         }
 
-        protected virtual void UpdateTimer()
-        {
-            if (m_Timer > 0)
-                m_Timer -= Time.deltaTime;
-        }
-
         protected abstract void Spawn();
 
         protected void OnDestroyEntity()
         {
-            if (m_SpawnMode == SpawnMode.LoopUntil) 
+            if (m_SpawnMode == SpawnMode.LoopUntil)
                 return;
 
             m_CurrentSpawnedCount--;
+        }
+
+        protected virtual void UpdateTimer()
+        {
+            if (m_Timer > 0)
+                m_Timer -= Time.deltaTime;
         }
     }
 }
