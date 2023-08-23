@@ -51,6 +51,7 @@ namespace TowerDefence
         public void OnCallWaveButtonClick()
         {
             enabled = true;
+            ClickSpot.EventOnSpotClick.Invoke(null);
             EnemyWavesManager.Instance?.ForceWave();
         }
 

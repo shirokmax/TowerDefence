@@ -34,6 +34,9 @@ namespace TowerDefence
                 m_CostText.color = Color.white;
         }
 
-        public abstract void Use();
+        public virtual void Use()
+        {
+            ClickSpot.EventOnSpotClick.Invoke(null);
+        }
     }
 }

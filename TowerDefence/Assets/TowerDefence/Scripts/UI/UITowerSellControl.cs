@@ -8,23 +8,37 @@ namespace TowerDefence
     {
         [SerializeField] private Button m_BuyButton;
         [SerializeField] private Text m_GoldText;
+        [SerializeField] private GameObject m_BuildSpotPrefab;
 
         [Space]
-        [SerializeField] private GameObject m_BuildSpotPrefab;
+        [Range(0f, 1f)]
+        [SerializeField] private float m_TowerSellGoldValueRate = 0.6f;
 
         private Tower m_CurrentTower;
 
+        private int m_SellGoldValue;
+
         private void Start()
         {
-            m_GoldText.text = m_CurrentTower.TotalCost.ToString();
+            m_SellGoldValue = CalculateSellGoldValue();
+
+            m_GoldText.text = m_SellGoldValue.ToString();
         }
 
         public void Sell()
         {
-            Player.Instance.AddGold(m_CurrentTower.TotalCost);
+            Player.Instance.AddGold(m_SellGoldValue);
             Instantiate(m_BuildSpotPrefab, m_CurrentTower.transform.position, Quaternion.identity);
             ClickSpot.EventOnSpotClick.Invoke(null);
             Destroy(m_CurrentTower.gameObject);
+        }
+
+        private int CalculateSellGoldValue()
+        {
+            if (EnemyWavesManager.Instance.WavesStarted == true)
+                return (int)(m_CurrentTower.TotalCost * m_TowerSellGoldValueRate);
+
+            return m_CurrentTower.TotalCost;
         }
 
         public void SetCurrentTower(Tower tower)

@@ -26,6 +26,9 @@ namespace TowerDefence
 
         private int m_ActiveEnemyUnitsCount;
 
+        private bool m_WavesStarted;
+        public bool WavesStarted => m_WavesStarted;
+
         private UnityEvent<int, int> m_EventOnWaveNumChange = new UnityEvent<int, int>();
 
         private UnityEvent m_EventOnStartSpawnEnemies = new UnityEvent();
@@ -98,6 +101,8 @@ namespace TowerDefence
         {
             //Выключение кнопки форсирования след. волны
             m_EventOnStartSpawnEnemies?.Invoke();
+
+            m_WavesStarted = true;
 
             m_EventOnWaveNumChange.Invoke(m_WaveIndex + 1, m_Waves.Length);
 

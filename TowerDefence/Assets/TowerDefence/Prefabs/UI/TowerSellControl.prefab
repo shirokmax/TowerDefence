@@ -288,6 +288,7 @@ MonoBehaviour:
   m_BuyButton: {fileID: 3309298679974024350}
   m_GoldText: {fileID: 1087388941005301752}
   m_BuildSpotPrefab: {fileID: 5566807516242113670, guid: 699fdd432ffb429498394bd90284ef29, type: 3}
+  m_TowerSellGoldRate: 0.601
 --- !u!1 &8492822764654584868
 GameObject:
   m_ObjectHideFlags: 0

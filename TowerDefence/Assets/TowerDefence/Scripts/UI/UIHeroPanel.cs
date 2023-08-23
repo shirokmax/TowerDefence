@@ -145,6 +145,8 @@ namespace TowerDefence
             m_SkillButtons[skillIndex].interactable = false;
             m_SkillIconImages[skillIndex].color = m_CooldownIconColor;
             m_SkillCooldownTexts[skillIndex].gameObject.SetActive(true);
+
+            ClickSpot.EventOnSpotClick.Invoke(null);
         }
     }
 }

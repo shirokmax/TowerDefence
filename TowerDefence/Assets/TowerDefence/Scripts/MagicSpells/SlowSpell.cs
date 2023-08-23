@@ -12,6 +12,8 @@ namespace TowerDefence
 
         public override void Use()
         {
+            base.Use();
+
             StartCoroutine(ApplySpell());
         }
 
