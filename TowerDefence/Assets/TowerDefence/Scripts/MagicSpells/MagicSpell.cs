@@ -10,9 +10,22 @@ namespace TowerDefence
         [SerializeField] protected Text m_CostText;
 
         [Space]
-        [SerializeField] protected int m_ManaCost;
+        [SerializeField] protected Sprite m_DefaultSpellSprite;
+        [SerializeField] protected Sprite m_ActiveSpellSprite;
 
-        protected bool m_InCoolDown;
+        [Space]
+        [SerializeField] protected int m_ManaCost;
+        [SerializeField] protected float m_Duration;
+
+        protected Image m_UseSpellButtonImage;
+
+        protected bool m_IsSpellActive;
+
+        private void Awake()
+        {
+            m_UseSpellButtonImage = m_UseSpellButton.transform.GetComponent<Image>();
+            m_UseSpellButtonImage.sprite = m_DefaultSpellSprite;
+        }
 
         private void Start()
         {
@@ -23,7 +36,7 @@ namespace TowerDefence
 
         private void OnManaChange()
         {
-            if (Player.Instance.Mana < m_ManaCost || m_InCoolDown)
+            if (Player.Instance.Mana < m_ManaCost || m_IsSpellActive)
                 m_UseSpellButton.interactable = false;
             else
                 m_UseSpellButton.interactable = true;

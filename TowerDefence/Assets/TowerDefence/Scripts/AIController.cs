@@ -130,6 +130,8 @@ namespace SpaceShooter
             {
                 if (Input.GetMouseButtonUp(1))
                 {
+                    ClickSpot.EventOnSpotClick.Invoke(null);
+
                     RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
                     if (hit.collider != null && hit.collider.tag == ROAD_TAG)

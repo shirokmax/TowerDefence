@@ -6,7 +6,8 @@ namespace SpaceShooter
     public enum DamageType
     {
         Physical,
-        Magic
+        Magic,
+        Pure
     }
 
     public class Projectile : Entity

@@ -8,7 +8,6 @@ namespace TowerDefence
     {
         [Range(0f, 1f)]
         [SerializeField] private float m_SlowRate;
-        [SerializeField] private float m_Duration;
 
         public override void Use()
         {
@@ -24,7 +23,9 @@ namespace TowerDefence
 
         private IEnumerator ApplySpell()
         {
-            m_InCoolDown = true;
+            m_IsSpellActive = true;
+            m_UseSpellButtonImage.sprite = m_ActiveSpellSprite;
+            m_UseSpellButton.interactable = false;
 
             Player.Instance.RemoveMana(m_ManaCost);
 
@@ -38,7 +39,9 @@ namespace TowerDefence
                 enemy.RestoreMoveSpeed();
             EnemyWavesManager.EventOnEnemySpawn.RemoveListener(Slow);
 
-            m_InCoolDown = false;
+            m_IsSpellActive = false;
+            m_UseSpellButtonImage.sprite = m_DefaultSpellSprite;
+            m_UseSpellButton.interactable = true;
         }
     }
 }

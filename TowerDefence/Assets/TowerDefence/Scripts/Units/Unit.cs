@@ -84,6 +84,7 @@ namespace TowerDefence
                 switch (dmgType)
                 {
                     case DamageType.Magic: return damage;
+                    case DamageType.Pure: return damage;
                     default: return Mathf.Max(1, damage - armor);
                 }
             },
@@ -92,6 +93,7 @@ namespace TowerDefence
             {
                 switch (dmgType)
                 {
+                    case DamageType.Pure: return damage;
                     case DamageType.Magic: return Mathf.Max(1, damage - armor);
                     default: return Mathf.Max(1, damage - armor / 2);
                 }
