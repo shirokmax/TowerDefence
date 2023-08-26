@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba72fef43e4301a49a86e1e14057523f, type: 3}
+  m_Name: FireSpell
+  m_EditorClassIdentifier: 
+  m_SpellName: Fire Spell
+  m_DefaultSpellIconSprite: {fileID: 21300000, guid: 34d6703ba7cf6dd469bb0aad4781fccb, type: 3}
+  m_ActiveSpellIconSprite: {fileID: 21300000, guid: bef141d2bfd071a48b9ac693227eb951, type: 3}
+  m_SpellType: 0
+  m_ManaCost: 50
+  m_Duration: 2
+  m_DamagePerSecond: 500
+  m_DamageTicksPerSecond: 4
+  m_Radius: 0.8
+  m_SlowRate: 0
+  m_ManaCostUpgrade: {fileID: 11400000, guid: 1b8b9225fa474a3439d4602284f6f262, type: 2}
+  m_DurationUpgrade: {fileID: 11400000, guid: fb146113847a6e14d96de28158801840, type: 2}
+  m_DamagePerSecondUpgrade: {fileID: 11400000, guid: 195a312e7d4dc09409411f4d02b61f46, type: 2}
+  m_SlowRateUpgrade: {fileID: 0}

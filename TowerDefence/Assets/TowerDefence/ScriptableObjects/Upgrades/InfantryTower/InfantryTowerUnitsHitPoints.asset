@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aee3af443ba0804dbe4cd5db44b0513, type: 3}
   m_Name: InfantryTowerUnitsHitPoints
   m_EditorClassIdentifier: 
+  m_UpgradeName: Endurance Improvement
   m_IconSprite: {fileID: 21300000, guid: bc5661cfbd3d8d1449ac80416a90fc4a, type: 3}
   m_CostsAndValues:
   - cost: 1
@@ -23,3 +24,4 @@ MonoBehaviour:
   - cost: 3
     value: 150
   m_Description: 'Increases soldiers hit points by '
+  m_PostValueDescription: 

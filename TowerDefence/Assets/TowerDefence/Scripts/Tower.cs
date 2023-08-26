@@ -45,9 +45,9 @@ namespace TowerDefence
         {
             base.Start();
 
-            m_Radius += Upgrades.GetUpgradeValueByLevel(m_AttackRangeUpgrade, Upgrades.GetUpgradeLevel(m_AttackRangeUpgrade));
+            m_Radius += Upgrades.GetCurrentUpgradeValue(m_AttackRangeUpgrade);
 
-            float fireRate = Upgrades.GetUpgradeValueByLevel(m_AttackSpeedUpgrade, Upgrades.GetUpgradeLevel(m_AttackSpeedUpgrade));
+            float fireRate = Upgrades.GetCurrentUpgradeValue(m_AttackSpeedUpgrade);
             m_MainTurret.SetAdditionalFireRate(-fireRate);
         }
 
@@ -70,7 +70,7 @@ namespace TowerDefence
 
                     if (m_DamageUpgrade != null && projectile != null)
                     {
-                        int damage = (int)Upgrades.GetUpgradeValueByLevel(m_DamageUpgrade, Upgrades.GetUpgradeLevel(m_DamageUpgrade));
+                        int damage = (int)Upgrades.GetCurrentUpgradeValue(m_DamageUpgrade);
                         projectile.AddDamage(damage);
                     }
                 }
@@ -138,10 +138,9 @@ namespace TowerDefence
                 m_UnitSpawner.SetSpawnCount(settings.UnitsSpawnCount);
                 m_UnitSpawner.SetSpawnCountLimit(settings.UnitsSpawnCount);
                 m_UnitSpawner.SetUnitsSpawnSFXPrefabs(settings.UnitSpawnSFXPrefabs);
-                m_UnitSpawner.SetAdditionalUnitsHitPoints((int)Upgrades.GetUpgradeValueByLevel(m_UnitsHitPointsUpgrade, Upgrades.GetUpgradeLevel(m_UnitsHitPointsUpgrade)));
-                m_UnitSpawner.SetAdditionalUnitsDamage((int)Upgrades.GetUpgradeValueByLevel(m_UnitsDamageUpgrade, Upgrades.GetUpgradeLevel(m_UnitsDamageUpgrade)));
-                m_UnitSpawner.SetRespawnTime(settings.UnitsRespawnTime -
-                             Upgrades.GetUpgradeValueByLevel(m_UnitsRespawnTimeUpgrade, Upgrades.GetUpgradeLevel(m_UnitsRespawnTimeUpgrade)));
+                m_UnitSpawner.SetAdditionalUnitsHitPoints((int)Upgrades.GetCurrentUpgradeValue(m_UnitsHitPointsUpgrade));
+                m_UnitSpawner.SetAdditionalUnitsDamage((int)Upgrades.GetCurrentUpgradeValue(m_UnitsDamageUpgrade));
+                m_UnitSpawner.SetRespawnTime(settings.UnitsRespawnTime - Upgrades.GetCurrentUpgradeValue(m_UnitsRespawnTimeUpgrade));
             }
 
             m_VisualModel.ApplySettings(settings);

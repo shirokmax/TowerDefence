@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aee3af443ba0804dbe4cd5db44b0513, type: 3}
   m_Name: BombTowerDamage
   m_EditorClassIdentifier: 
+  m_UpgradeName: Quality Gunpowder
   m_IconSprite: {fileID: 21300000, guid: 2f1be5f3a34cc2942b414db747d853ed, type: 3}
   m_CostsAndValues:
   - cost: 1
@@ -23,3 +24,4 @@ MonoBehaviour:
   - cost: 3
     value: 10
   m_Description: 'Increases damage of bomb towers by '
+  m_PostValueDescription: 

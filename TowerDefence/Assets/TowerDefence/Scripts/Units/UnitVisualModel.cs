@@ -11,7 +11,9 @@ namespace TowerDefence
 
         [Space]
         [SerializeField] private SpriteRenderer m_UnitSprite;
+
         [SerializeField] private SpriteRenderer m_ShadowSprite;
+        public SpriteRenderer ShadowSprite => m_ShadowSprite;
 
         [Space]
         [SerializeField] private Animator m_UnitAnimator;

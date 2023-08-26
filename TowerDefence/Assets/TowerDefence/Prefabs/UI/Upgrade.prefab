@@ -60,9 +60,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2695ba04ad79ffe418ede27bcc58c599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SlotType: 0
   m_UpgradeAsset: {fileID: 0}
+  m_RequireUpgrade: {fileID: 0}
+  m_TowerSettings: []
+  m_MagicSpellProperties: {fileID: 0}
   m_IconImage: {fileID: 4558213852325553672}
   m_SelectButton: {fileID: 1444132789563512207}
+  m_UpgradeLevelWindowImage: {fileID: 7256277975896802965}
   m_LevelNumText: {fileID: 6489073847109998791}
   m_ActiveIconImage: {fileID: 8956507168120389544}
 --- !u!1 &3199442175479715499
@@ -140,7 +145,7 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 1
-    m_RichText: 1
+    m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.3
@@ -351,7 +356,7 @@ GameObject:
   - component: {fileID: 8982973598297373980}
   - component: {fileID: 7256277975896802965}
   m_Layer: 5
-  m_Name: UpgradeLevellWindow
+  m_Name: UpgradeLevelWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

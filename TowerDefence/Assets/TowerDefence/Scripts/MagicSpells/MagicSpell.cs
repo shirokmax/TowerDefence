@@ -8,10 +8,15 @@ namespace TowerDefence
     {
         [SerializeField] protected Button m_UseSpellButton;
         [SerializeField] protected Text m_CostText;
+        [SerializeField] protected Sprite m_DefaultSpellIconSprite;
+        [SerializeField] protected Sprite m_ActiveSpellIconSprite;
+        [SerializeField] protected Text m_magicSpellNameText;
+        [SerializeField] protected Image m_ManaCostPanelImage;
+        [SerializeField] protected Image m_ManaImage;
+        [SerializeField] protected Color m_InactiveColor;
 
         [Space]
-        [SerializeField] protected Sprite m_DefaultSpellSprite;
-        [SerializeField] protected Sprite m_ActiveSpellSprite;
+        [SerializeField] protected MagicSpellProperties m_Properties;
 
         [Space]
         [SerializeField] protected int m_ManaCost;
@@ -21,16 +26,15 @@ namespace TowerDefence
 
         protected bool m_IsSpellActive;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             m_UseSpellButtonImage = m_UseSpellButton.transform.GetComponent<Image>();
-            m_UseSpellButtonImage.sprite = m_DefaultSpellSprite;
+            m_UseSpellButtonImage.sprite = m_DefaultSpellIconSprite;
         }
 
-        private void Start()
+        protected virtual void Start()
         {
             Player.Instance.ManaChangeSubscribe(OnManaChange);
-
             m_CostText.text = m_ManaCost.ToString();
         }
 
@@ -50,6 +54,15 @@ namespace TowerDefence
         public virtual void Use()
         {
             ClickSpot.EventOnSpotClick.Invoke(null);
+        }
+
+        public virtual void ApplyProperties(MagicSpellProperties props)
+        {
+            m_DefaultSpellIconSprite = props.DefaultSpellIconSprite;
+            m_ActiveSpellIconSprite = props.ActiveSpellIconSprite;
+
+            m_ManaCost = props.ManaCost;
+            m_Duration = props.Duration;
         }
     }
 }

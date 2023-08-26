@@ -3,6 +3,13 @@ using UnityEngine;
 
 namespace TowerDefence
 {
+    public enum UpgradeType
+    {
+        Default,   
+        Percents,
+        Unlock
+    }
+
     [CreateAssetMenu]
     public sealed class UpgradeAsset : ScriptableObject
     {
@@ -17,6 +24,12 @@ namespace TowerDefence
             [SerializeField] private float value;
             public float Value => value;
         }
+
+        [SerializeField] private UpgradeType m_UpgradeType;
+        public UpgradeType UpgradeType => m_UpgradeType;
+
+        [SerializeField] private string m_UpgradeName;
+        public string UpgradeName => m_UpgradeName;
 
         [SerializeField] private Sprite m_IconSprite;
         public Sprite IconSprite => m_IconSprite;

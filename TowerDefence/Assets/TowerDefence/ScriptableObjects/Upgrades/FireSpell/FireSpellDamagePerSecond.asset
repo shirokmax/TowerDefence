@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aee3af443ba0804dbe4cd5db44b0513, type: 3}
+  m_Name: FireSpellDamagePerSecond
+  m_EditorClassIdentifier: 
+  m_UpgradeName: Napalm Power
+  m_IconSprite: {fileID: 21300000, guid: 3ab02b5927b4cb946b747501935bfa74, type: 3}
+  m_CostsAndValues:
+  - cost: 1
+    value: 20
+  - cost: 2
+    value: 30
+  - cost: 3
+    value: 50
+  m_Description: 'Increases damage per second by '
+  m_PostValueDescription: 

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aee3af443ba0804dbe4cd5db44b0513, type: 3}
   m_Name: InfantryTowerUnitsRespawnTime
   m_EditorClassIdentifier: 
+  m_UpgradeName: Accelerated Training
   m_IconSprite: {fileID: 21300000, guid: 8d3c0c2860644c84ab9916741ce3843f, type: 3}
   m_CostsAndValues:
   - cost: 1

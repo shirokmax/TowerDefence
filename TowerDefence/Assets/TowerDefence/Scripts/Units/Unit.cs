@@ -173,8 +173,11 @@ namespace TowerDefence
 
         public void ChangeMoveSpeed(float speedRate)
         {
+            if (speedRate < 0 || speedRate > 1) 
+                return;
+
             m_MoveSpeedBackup = m_MoveSpeed;
-            m_MoveSpeed *= speedRate;
+            m_MoveSpeed *= 1 - speedRate;
         }
 
         public void RestoreMoveSpeed()

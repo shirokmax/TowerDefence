@@ -46,6 +46,25 @@ namespace TowerDefence
             return 0;
         }
 
+        public static float GetCurrentUpgradeValue(UpgradeAsset asset)
+        {
+            float totalValue = 0;
+            int level = GetUpgradeLevel(asset);
+
+            foreach (var upgrade in Instance.m_Saves)
+            {
+                if (upgrade.asset == asset)
+                {
+                    for (int i = 0; i < level; i++)
+                        totalValue += upgrade.asset.CostsAndValues[i].Value;
+
+                    return totalValue;
+                }
+            }
+
+            return 0f;
+        }
+
         public static float GetUpgradeValueByLevel(UpgradeAsset asset, int level)
         {
             float totalValue = 0;

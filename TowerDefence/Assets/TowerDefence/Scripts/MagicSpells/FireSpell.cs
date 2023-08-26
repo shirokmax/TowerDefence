@@ -16,7 +16,29 @@ namespace TowerDefence
         [SerializeField] private ImpactEffect m_FireEffectVFXPrefab;
         [SerializeField] private ImpactEffect m_FireEffectSFXPrefab;
 
+        [Space]
+        [SerializeField] private UpgradeAsset m_DamagePerSecondUpgrade;
+        [SerializeField] private UpgradeAsset m_DurationUpgrade;
+        [SerializeField] private UpgradeAsset m_ManaCostUpgrade;
+
         private bool m_IsTargeting;
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            if (m_Properties != null)
+                ApplyProperties(m_Properties);
+        }
+
+        protected override void Start()
+        {
+            m_ManaCost -= (int)Upgrades.GetCurrentUpgradeValue(m_ManaCostUpgrade);
+            m_DamagePerSecond += (int)Upgrades.GetCurrentUpgradeValue(m_DamagePerSecondUpgrade);
+            m_Duration += Upgrades.GetCurrentUpgradeValue(m_DurationUpgrade);
+
+            base.Start();
+        }
 
         private void Update()
         {
@@ -29,7 +51,7 @@ namespace TowerDefence
             base.Use();
 
             m_IsTargeting = true;
-            m_UseSpellButtonImage.sprite = m_ActiveSpellSprite;
+            m_UseSpellButtonImage.sprite = m_ActiveSpellIconSprite;
             m_TargetCircle.enabled = true;
 
             UIClickProtection.Instance.Activate(Fire);
@@ -45,7 +67,7 @@ namespace TowerDefence
             {
                 m_IsTargeting = false;
                 m_TargetCircle.enabled = false;
-                m_UseSpellButtonImage.sprite = m_DefaultSpellSprite;
+                m_UseSpellButtonImage.sprite = m_DefaultSpellIconSprite;
             }
         }
 
@@ -89,7 +111,16 @@ namespace TowerDefence
             }
 
             m_IsSpellActive = false;
-            m_UseSpellButtonImage.sprite = m_DefaultSpellSprite;
+            m_UseSpellButtonImage.sprite = m_DefaultSpellIconSprite;
+        }
+
+        public override void ApplyProperties(MagicSpellProperties props)
+        {
+            base.ApplyProperties(props);
+
+            m_DamagePerSecond = props.DamagePerSecond;
+            m_DamageTicksPerSecond = props.DamageTicksPerSecond;
+            m_Radius = props.Radius;
         }
 
 #if UNITY_EDITOR
