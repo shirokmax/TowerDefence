@@ -6215,7 +6215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_DoNotDestroyOnLoad: 1
-  m_DefaultHero: {fileID: 6681972977651085802, guid: db4c2372b6ef2e04f9d05139a0f96a3a, type: 3}
+  m_DefaultHero: {fileID: 7894990188463292665, guid: db4c2372b6ef2e04f9d05139a0f96a3a, type: 3}
 --- !u!4 &1411215641
 Transform:
   m_ObjectHideFlags: 0

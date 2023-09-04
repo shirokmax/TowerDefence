@@ -50,7 +50,7 @@ namespace TowerDefence
             FileHandler.Reset(MapCompletion.FILENAME);
             FileHandler.Reset(Upgrades.FILENAME);
 
-            MapCompletion.Instance.ResetProgress();
+            MapCompletion.Instance?.ResetProgress();
 
             SceneManager.LoadScene(1);
         }
@@ -64,5 +64,15 @@ namespace TowerDefence
         {
             Application.Quit();
         }
+
+#if UNITY_EDITOR
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.F1))
+            {
+                PlayerPrefs.DeleteAll();
+            }
+        }
+#endif
     }
 }

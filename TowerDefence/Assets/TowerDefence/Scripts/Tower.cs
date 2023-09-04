@@ -47,11 +47,20 @@ namespace TowerDefence
 
             m_Radius += Upgrades.GetCurrentUpgradeValue(m_AttackRangeUpgrade);
 
-            float fireRate = Upgrades.GetCurrentUpgradeValue(m_AttackSpeedUpgrade);
-            m_MainTurret.SetAdditionalFireRate(-fireRate);
+            if (m_MainTurret != null)
+            {
+                float fireRate = Upgrades.GetCurrentUpgradeValue(m_AttackSpeedUpgrade);
+                m_MainTurret.SetAdditionalFireRate(-fireRate);
+            }
         }
 
         private void Update()
+        {
+            if (m_MainTurret != null) 
+                TurretFire();
+        }
+
+        private void TurretFire()
         {
             if (m_Target == null)
             {
@@ -114,8 +123,16 @@ namespace TowerDefence
 
             m_Nickname = settings.Nickname;
 
-            m_MainTurret.AssignLoadout(settings.TurretProps);
-            m_MainTurret.transform.localPosition = new Vector3(settings.TurretPosition.x, settings.TurretPosition.y, 0);
+            if (settings.TurretProps != null)
+            {
+                m_MainTurret.AssignLoadout(settings.TurretProps);
+                m_MainTurret.transform.localPosition = new Vector3(settings.TurretPosition.x, settings.TurretPosition.y, 0);
+            }
+            else
+            {
+                m_MainTurret = null;
+            }
+
             m_Radius = settings.Radius;
 
             m_UnitSpawner.enabled = settings.SpawnUnits;
