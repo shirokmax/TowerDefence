@@ -18,7 +18,7 @@ MonoBehaviour:
   m_SpellType: 0
   m_ManaCost: 50
   m_Duration: 2
-  m_DamagePerSecond: 500
+  m_DamagePerSecond: 200
   m_DamageTicksPerSecond: 4
   m_Radius: 0.8
   m_SlowRate: 0

@@ -129,7 +129,7 @@ namespace SpaceShooter
 
         private void StopLevelActivity()
         {
-            DisableAll<Spawner>();
+            DisableAll<EnemyWave>();
             DisableAll<Tower>();
             DisableAll<Projectile>();
             DisableAll<Unit>();

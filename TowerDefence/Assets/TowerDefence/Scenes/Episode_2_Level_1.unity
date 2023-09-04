@@ -6985,6 +6985,8 @@ MonoBehaviour:
   m_DoNotDestroyOnLoad: 0
   m_NumLives: 20
   m_Gold: 600
+  m_MaxMana: 100
+  m_ManaRegenPerSecond: 1.5
   m_TowerPrefab: {fileID: 6619452280017600938, guid: 9ff33af2019d4d34bbb94a1e47ee890a, type: 3}
   m_TowerBuildTime: 1.5
   m_TowerBuildProgressVFXPrefab: {fileID: 2850089312877477429, guid: d3c2a5347df424e43a1f59050df3ff32, type: 3}

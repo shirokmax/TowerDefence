@@ -9,7 +9,6 @@ namespace SpaceShooter
         Tower,
         Unit,
         Projectile,
-        Powerup
     }
 
     /// <summary>

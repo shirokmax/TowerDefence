@@ -44,6 +44,11 @@ namespace SpaceShooter
             SceneManager.LoadScene(0);
         }
 
+        public void LoadLevelMap()
+        {
+            SceneManager.LoadScene(LevelMapSceneName);
+        }
+
         public void RestartLevel()
         {
             SceneManager.LoadScene(CurrentEpisode.Levels[CurrentLevel]);

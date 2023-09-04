@@ -6,12 +6,19 @@ namespace TowerDefence
 {
     public class UIMainMenu : MonoBehaviour
     {
+        public const float DEFAULT_VOLUME_VALUE = 0.7f;
+
         [SerializeField] private Button m_ContinueButton;
         [SerializeField] private Image m_ContinueTextImage;
         [SerializeField] private Color m_ContinueTextInactiveColor;
 
         [Space]
         [SerializeField] private GameObject m_StartNewGamePanel;
+
+        private void Awake()
+        {
+            AudioListener.volume = PlayerPrefs.GetFloat("Settings:Volume", DEFAULT_VOLUME_VALUE);
+        }
 
         private void Start()
         {

@@ -14,6 +14,7 @@ namespace TowerDefence
         [SerializeField] private Color m_CooldownIconColor;
 
         [Space]
+        [SerializeField] private KeyCode[] m_SkillsKeys;
         [SerializeField] private Image[] m_SkillIconImages;
         [SerializeField] private Text[] m_SkillCooldownTexts;
 
@@ -60,6 +61,8 @@ namespace TowerDefence
 
         private void Update()
         {
+            SkillsKeyboardInput();
+
             if (m_HeroRespawnCooldownText.text != ((int)Player.Instance.HeroRespawnTimer.CurrentTime).ToString())
                 m_HeroRespawnCooldownText.text = ((int)Player.Instance.HeroRespawnTimer.CurrentTime).ToString();
 
@@ -79,6 +82,18 @@ namespace TowerDefence
                         if (m_SkillCooldownTexts[i].text != ((int)Player.Instance.ActiveHero.HeroSkills[i].CooldownTimer.CurrentTime).ToString())
                             m_SkillCooldownTexts[i].text = ((int)Player.Instance.ActiveHero.HeroSkills[i].CooldownTimer.CurrentTime).ToString();
                     }
+                }
+            }
+        }
+
+        private void SkillsKeyboardInput()
+        {
+            for (int i = 0; i < Player.Instance.ActiveHero.HeroSkills.Length; i++)
+            {
+                if (Input.GetKeyDown(m_SkillsKeys[i]))
+                {
+                    if (m_SkillButtons[i].interactable == true) 
+                        m_SkillButtons[i].onClick.Invoke();
                 }
             }
         }
