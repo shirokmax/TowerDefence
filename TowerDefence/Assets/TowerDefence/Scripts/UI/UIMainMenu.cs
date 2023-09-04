@@ -17,7 +17,10 @@ namespace TowerDefence
 
         private void Awake()
         {
-            AudioListener.volume = PlayerPrefs.GetFloat("Settings:Volume", DEFAULT_VOLUME_VALUE);
+            if (PlayerPrefs.HasKey("Settings:Volume") == false)
+                PlayerPrefs.SetFloat("Settings:Volume", DEFAULT_VOLUME_VALUE);
+
+            AudioListener.volume = PlayerPrefs.GetFloat("Settings:Volume", DEFAULT_VOLUME_VALUE);           
         }
 
         private void Start()
