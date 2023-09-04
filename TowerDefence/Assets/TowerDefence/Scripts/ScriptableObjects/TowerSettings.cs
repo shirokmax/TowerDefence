@@ -22,6 +22,14 @@ namespace TowerDefence
         [SerializeField] private Vector2 m_TowerSpriteScale = Vector2.one;
         public Vector2 TowerSpriteScale => m_TowerSpriteScale;
 
+        [Space]
+        [SerializeField] private Vector2 m_GroundSpriteScale = new Vector2(1.2f, 1.2f);
+        public Vector2 GroundSpriteScale => m_GroundSpriteScale;
+
+        [SerializeField] private Vector2 m_GroundPosition = Vector2.zero;
+        public Vector2 GroundPosition => m_GroundPosition;
+
+        [Space]
         [SerializeField] private Vector2 m_ShadowSpriteScale = Vector2.one;
         public Vector2 ShadowSpriteScale => m_ShadowSpriteScale;
 

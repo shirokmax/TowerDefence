@@ -17,6 +17,8 @@ MonoBehaviour:
   m_TowerSprite: {fileID: 21300000, guid: 298636722737c4b41816506cd4bc994f, type: 3}
   m_TowerSpriteColor: {r: 1, g: 1, b: 1, a: 1}
   m_TowerSpriteScale: {x: 1.2, y: 1.2}
+  m_GroundSpriteScale: {x: 1.4, y: 1.4}
+  m_GroundPosition: {x: 0, y: -0.2}
   m_ShadowSpriteScale: {x: 3.2, y: 3.2}
   m_ShadowPosition: {x: 0, y: -0.52}
   m_TurretProps: {fileID: 11400000, guid: 78cc50cf7ea26bb4da35d1a5c1f7059f, type: 2}
